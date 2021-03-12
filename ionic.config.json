@@ -1,0 +1,7 @@
+{
+  "name": "Pokemon-Cards-Api",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
