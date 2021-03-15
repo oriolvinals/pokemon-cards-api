@@ -1,0 +1,3 @@
+- Creació de les diferents pagines en l'apartat de pages: Home, Sets, Set Info, Card Info, Search info
+- Creació del header i el footer en l'apartat de pages/layout
+- Creació dels components Search Bar, SetsData, SetCards, CardInfo, CardPreview
