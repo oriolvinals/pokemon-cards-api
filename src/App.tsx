@@ -1,6 +1,9 @@
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import "./index.css";
+import Header from "./pages/layout/Header";
+import Footer from "./pages/layout/Footer";
 import Home from "./pages/Home";
 import Sets from "./pages/Sets";
 import SetCards from "./pages/SetCards";
@@ -26,6 +29,7 @@ import "./theme/variables.css";
 
 const App: React.FC = () => (
 	<IonApp>
+		<Header />
 		<IonReactRouter>
 			<IonRouterOutlet>
 				<Route exact path="/">
@@ -38,6 +42,7 @@ const App: React.FC = () => (
 				<Route path="/card/:id"></Route>
 			</IonRouterOutlet>
 		</IonReactRouter>
+		<Footer />
 	</IonApp>
 );
 

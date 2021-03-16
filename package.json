@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@capacitor/core": "2.4.7",
+		"@craco/craco": "^6.1.1",
 		"@ionic/react": "^5.5.0",
 		"@ionic/react-router": "^5.5.0",
 		"@testing-library/jest-dom": "^5.11.9",
@@ -37,9 +38,12 @@
 		"workbox-streams": "^5.1.4"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"start-r": "react-scripts start",
+		"build-r": "react-scripts build",
+		"test-r": "react-scripts test",
+		"start": "craco start",
+		"build": "craco build",
+		"test": "craco test",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
@@ -61,7 +65,11 @@
 		]
 	},
 	"devDependencies": {
-		"@capacitor/cli": "2.4.7"
+		"@capacitor/cli": "2.4.7",
+		"@tailwindcss/postcss7-compat": "^2.0.3",
+		"autoprefixer": "^9.8.6",
+		"postcss": "^7.0.35",
+		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
 	},
 	"description": "An Ionic project"
 }
