@@ -31,14 +31,11 @@ const App: React.FC = () => (
 				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route
-					exact
-					path="/sets/:id"
-					children={<SetCards id={"Hola"} />}
-				/>
+				<Route path="/sets/:id" children={<SetCards />} />
 				<Route exact path="/sets">
 					<Sets />
 				</Route>
+				<Route path="/card/:id"></Route>
 			</IonRouterOutlet>
 		</IonReactRouter>
 	</IonApp>
