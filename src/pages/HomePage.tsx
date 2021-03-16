@@ -1,6 +1,6 @@
 import { IonPage } from "@ionic/react";
 import Header from "./layout/Header";
-const Home: React.FC = () => {
+const HomePage = () => {
 	return (
 		<IonPage>
 			<Header />
@@ -8,4 +8,4 @@ const Home: React.FC = () => {
 	);
 };
 
-export default Home;
+export default HomePage;

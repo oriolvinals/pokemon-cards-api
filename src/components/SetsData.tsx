@@ -1,3 +1,4 @@
+import { IonContent } from "@ionic/react";
 import SetPreview from "./SetPreview";
 
 type Sets = {
@@ -6,7 +7,7 @@ type Sets = {
 
 const SetsData = ({ sets }: Sets) => {
 	return (
-		<div className="px-10 md:px-16 xl:px-48 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
+		<IonContent className="px-10 grid grid-cols-1">
 			{sets.map((element, i) => (
 				<SetPreview
 					id={element.id}
@@ -16,7 +17,7 @@ const SetsData = ({ sets }: Sets) => {
 					symbol={element.images.symbol}
 				/>
 			))}
-		</div>
+		</IonContent>
 	);
 };
 

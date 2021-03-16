@@ -4,7 +4,7 @@ import Header from "./layout/Header";
 import SetsData from "../components/SetsData";
 import { getSets } from "../services/Api";
 
-const Sets = () => {
+const SetsPage = () => {
 	const [searchText, setSearchText] = useState("");
 	const [sets, setSets] = useState<any[]>([]);
 
@@ -17,10 +17,10 @@ const Sets = () => {
 	}, []);
 
 	const getFilteredSets = () => {
-		const filteredCharacters = sets.filter(({ name }) =>
+		const filteredSets = sets.filter(({ name }) =>
 			name.toLowerCase().includes(searchText.toLowerCase())
 		);
-		return filteredCharacters;
+		return filteredSets;
 	};
 
 	return (
@@ -35,4 +35,4 @@ const Sets = () => {
 	);
 };
 
-export default Sets;
+export default SetsPage;
