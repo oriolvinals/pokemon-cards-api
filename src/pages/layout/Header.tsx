@@ -16,13 +16,6 @@ const Header: React.FC = () => {
 					<IonTitle>Pokémon</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
-				<IonHeader collapse="condense">
-					<IonToolbar color="primary">
-						<IonTitle size="large">Pokémon</IonTitle>
-					</IonToolbar>
-				</IonHeader>
-			</IonContent>
 		</IonPage>
 	);
 };
