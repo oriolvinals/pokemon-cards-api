@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IonHeader, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { IonHeader, IonTitle, IonToolbar } from "@ionic/react";
 
 const Header: React.FC = () => {
 	const [searchText, setSearchText] = useState("");
@@ -8,10 +8,6 @@ const Header: React.FC = () => {
 		<IonHeader>
 			<IonToolbar color="primary">
 				<IonTitle>Pokémon</IonTitle>
-				<IonSearchbar
-					value={searchText}
-					onIonChange={(e) => setSearchText(e.detail.value!)}
-				></IonSearchbar>
 			</IonToolbar>
 		</IonHeader>
 	);

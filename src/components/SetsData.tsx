@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { getSets } from "../services/Api";
+import SetPreview from "./SetPreview";
 
-const SetsData: React.FC = () => {
+type SetsProps = {
+	name: string;
+};
+
+const SetsData = ({ name }: SetsProps) => {
 	const [sets, setSets] = useState<any[]>([]);
 
 	useEffect(() => {
@@ -16,33 +20,13 @@ const SetsData: React.FC = () => {
 	return (
 		<div className="px-10 md:px-16 xl:px-48 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
 			{sets.map((element, i) => (
-				<Link
-					to={{ pathname: "/sets/" + element.id }}
-					key={i}
-					className="bg-gray-800 p-10 m-2 flex flex-col items-center rounded-md scale-100 transition hover:absolute hover:scale-200"
-				>
-					<div className="text-center h-36 pt-3 flex items-center justify-center">
-						<img
-							src={element.images.logo}
-							alt={element.name + " set logo"}
-							className="max-w-full max-h-full"
-						/>
-					</div>
-					<div className="flex mt-5 items-center justify-center">
-						<div className="text-center h-8 flex items-center justify-center">
-							<img
-								src={element.images.symbol}
-								alt={element.name + " set symbol"}
-								className="max-w-full max-h-full"
-							/>
-						</div>
-						<div className="pl-4 text-gray-400">
-							<p className="font-bold	text-2xl">{element.name}</p>
-							<p className="text-md">{element.releaseDate}</p>
-						</div>
-					</div>
-					<div></div>
-				</Link>
+				<SetPreview
+					id={element.id}
+					name={element.name}
+					releaseDate={element.releaseDate}
+					logo={element.images.logo}
+					symbol={element.images.symbol}
+				/>
 			))}
 		</div>
 	);
