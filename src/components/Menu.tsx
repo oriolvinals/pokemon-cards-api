@@ -10,7 +10,7 @@ import {
 	IonNote,
 } from "@ionic/react";
 
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
 	archiveOutline,
 	archiveSharp,
@@ -36,8 +36,8 @@ interface AppPage {
 
 const appPages: AppPage[] = [
 	{
-		title: "Search",
-		url: "/search",
+		title: "Home",
+		url: "/",
 		iosIcon: mailOutline,
 		mdIcon: mailSharp,
 	},
@@ -46,12 +46,6 @@ const appPages: AppPage[] = [
 		url: "/sets",
 		iosIcon: paperPlaneOutline,
 		mdIcon: paperPlaneSharp,
-	},
-	{
-		title: "Advanced",
-		url: "/advanced",
-		iosIcon: heartOutline,
-		mdIcon: heartSharp,
 	},
 ];
 
@@ -66,23 +60,10 @@ const Menu: React.FC = () => {
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
-								<IonItem
-									className={
-										location.pathname === appPage.url
-											? "selected"
-											: ""
-									}
-									routerLink={appPage.url}
-									routerDirection="none"
-									lines="none"
-									detail={false}
-								>
-									<IonIcon
-										slot="start"
-										ios={appPage.iosIcon}
-										md={appPage.mdIcon}
-									/>
-									<IonLabel>{appPage.title}</IonLabel>
+								<IonItem>
+									<Link to={appPage.url}>
+										{appPage.title}
+									</Link>
 								</IonItem>
 							</IonMenuToggle>
 						);

@@ -32,17 +32,14 @@ const App: React.FC = () => (
 			<IonSplitPane contentId="main">
 				<Menu />
 				<IonRouterOutlet id="main">
-					<Route path="/" exact={true}>
+					<Route path="/">
 						<HomePage name="Home" />
 					</Route>
+					<Route path="/sets" exact={true}>
+						<SetsPage name="Sets" />
+					</Route>
 					<Route path="/set/:id" exact={true}>
-						<SetCardsPage name="Set info" />
-					</Route>
-					<Route path="/search" exact={true}>
-						<SetsPage name="Sets" />
-					</Route>
-					<Route path="/advanced" exact={true}>
-						<SetsPage name="Sets" />
+						<SetCardsPage name="Set " />
 					</Route>
 				</IonRouterOutlet>
 			</IonSplitPane>

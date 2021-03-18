@@ -9,6 +9,7 @@ const SetsData = ({ sets }: Sets) => {
 		<div className="px-10 grid grid-cols-1">
 			{sets.map((element, i) => (
 				<SetPreview
+					key={i}
 					id={element.id}
 					name={element.name}
 					releaseDate={element.releaseDate}

@@ -29,7 +29,7 @@ const HomePage = ({ name }: Title) => {
 						<IonTitle size="large">Home</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div>hola</div>
+				<div>Home page</div>
 			</IonContent>
 		</IonPage>
 	);
