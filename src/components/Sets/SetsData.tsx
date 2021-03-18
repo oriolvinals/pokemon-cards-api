@@ -1,6 +1,6 @@
 import SetPreview from "./SetPreview";
 
-type Sets = {
+interface Sets  {
 	sets: Array<any>;
 };
 
@@ -21,7 +21,7 @@ const SetsData = ({ sets }: Sets) => {
 			</div>
 		);
 	} else {
-		return <></>;
+		return <div className="text-gray-500 text-2xl text-center mt-10"> No hi ha dades disponibles</div>;
 	}
 };
 

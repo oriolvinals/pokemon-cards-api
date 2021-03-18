@@ -20,13 +20,13 @@ const HomePage = ({ name }: Title) => {
 					<IonButtons slot="start">
 						<IonMenuButton />
 					</IonButtons>
-					<IonTitle>Home</IonTitle>
+					<IonTitle>{name}</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
 				<IonHeader collapse="condense">
 					<IonToolbar>
-						<IonTitle size="large">Home</IonTitle>
+						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 				<div>Home page</div>

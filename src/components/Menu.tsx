@@ -12,19 +12,13 @@ import {
 
 import { Link, useLocation } from "react-router-dom";
 import {
-	archiveOutline,
-	archiveSharp,
-	bookmarkOutline,
-	heartOutline,
-	heartSharp,
 	mailOutline,
 	mailSharp,
 	paperPlaneOutline,
 	paperPlaneSharp,
-	trashOutline,
-	trashSharp,
-	warningOutline,
-	warningSharp,
+	planetOutline,
+	albumsOutline,
+	albums,
 } from "ionicons/icons";
 
 interface AppPage {
@@ -38,14 +32,14 @@ const appPages: AppPage[] = [
 	{
 		title: "Home",
 		url: "/",
-		iosIcon: mailOutline,
-		mdIcon: mailSharp,
+		iosIcon: planetOutline,
+		mdIcon: planetOutline,
 	},
 	{
 		title: "Sets",
 		url: "/sets",
-		iosIcon: paperPlaneOutline,
-		mdIcon: paperPlaneSharp,
+		iosIcon: albumsOutline,
+		mdIcon: albumsOutline,
 	},
 ];
 
@@ -60,10 +54,11 @@ const Menu: React.FC = () => {
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
-								<IonItem>
-									<Link to={appPage.url}>
-										{appPage.title}
-									</Link>
+								<IonItem className="bg-green-600" routerLink={appPage.url}>
+									
+										<IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon}></IonIcon>
+										<IonLabel>{appPage.title}</IonLabel>
+									
 								</IonItem>
 							</IonMenuToggle>
 						);
