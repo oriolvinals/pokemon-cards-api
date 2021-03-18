@@ -11,7 +11,7 @@ type SetProps = {
 const SetPreview = ({ id, name, releaseDate, logo, symbol }: SetProps) => {
 	return (
 		<Link
-			to={{ pathname: "/set/" + id }}
+			to={{ pathname: "/sets/" + id }}
 			key={id}
 			className="bg-gray-800 p-10 m-2 flex flex-col items-center rounded-md scale-100 hover:absolute hover:scale-200 transition-all duration-500 ease-in-out"
 		>
