@@ -54,11 +54,16 @@ const Menu: React.FC = () => {
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
-								<IonItem className="bg-green-600" routerLink={appPage.url}>
-									
-										<IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon}></IonIcon>
-										<IonLabel>{appPage.title}</IonLabel>
-									
+								<IonItem
+									className="bg-green-600"
+									routerLink={appPage.url}
+								>
+									<IonIcon
+										slot="start"
+										ios={appPage.iosIcon}
+										md={appPage.mdIcon}
+									></IonIcon>
+									<IonLabel>{appPage.title}</IonLabel>
 								</IonItem>
 							</IonMenuToggle>
 						);

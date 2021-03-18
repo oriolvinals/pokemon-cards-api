@@ -13,9 +13,9 @@ const SetPreview = ({ id, name, releaseDate, logo, symbol }: SetProps) => {
 		<Link
 			to={{ pathname: "/sets/" + id }}
 			key={id}
-			className="bg-gray-800 p-10 m-2 flex flex-col items-center rounded-md scale-100 hover:absolute hover:scale-200 transition-all duration-500 ease-in-out"
+			className="bg-gray-800 px-10 py-2 m-2 flex flex-col items-center rounded-md scale-100 hover:absolute hover:scale-200 transition-all duration-500 ease-in-out"
 		>
-			<div className="text-center h-36 pt-3 flex items-center justify-center">
+			<div className="text-center h-24 pt-3 flex items-center justify-center">
 				<img
 					src={logo}
 					alt={name + " set logo"}
