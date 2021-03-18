@@ -19,11 +19,7 @@ interface ParamType {
 	id: string;
 }
 
-interface Title {
-	name: string;
-}
-
-const SetCardsPage = ({ name }: Title) => {
+const SetCardsPage = () => {
 	const { id } = useParams<ParamType>();
 
 	const [searchText, setSearchText] = useState("");
@@ -64,7 +60,7 @@ const SetCardsPage = ({ name }: Title) => {
 					<IonButtons slot="start">
 						<IonMenuButton />
 					</IonButtons>
-					<IonTitle>{name}</IonTitle>
+					<IonTitle>{set.name}</IonTitle>
 				</IonToolbar>
 				<div className="bg-red-300">
 					<IonSearchbar
@@ -78,7 +74,7 @@ const SetCardsPage = ({ name }: Title) => {
 			<IonContent fullscreen>
 				<IonHeader collapse="condense">
 					<IonToolbar>
-						<IonTitle size="large">{name}</IonTitle>
+						<IonTitle size="large">{set.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 				<SetInfo info={set} />

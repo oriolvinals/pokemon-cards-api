@@ -6,7 +6,7 @@ type Cards = {
 
 const SetCardsData = ({ cards }: Cards) => {
 	return (
-		<div className="px-10 grid grid-cols-4">
+		<div className="px-5 grid grid-cols-2">
 			{cards.map((element, i) => (
 				<CardPreview
 					key={i}

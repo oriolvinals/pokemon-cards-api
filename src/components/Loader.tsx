@@ -5,7 +5,7 @@ interface Loading {
 const Loader = ({ loading }: Loading) => {
 	if (loading) {
 		return (
-			<div className="absolute z-50 h-full w-full flex items-center justify-center mt-10">
+			<div className="fixed z-50 inset-1/4 flex items-center justify-center">
 				<svg
 					className="animate-spin -ml-1 mr-3 h-12 w-12 text-white"
 					xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ const Loader = ({ loading }: Loading) => {
 						cy="12"
 						r="10"
 						stroke="currentColor"
-						stroke-width="4"
+						strokeWidth="4"
 					></circle>
 					<path
 						className="opacity-75"

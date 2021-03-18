@@ -39,7 +39,7 @@ const App: React.FC = () => (
 						<SetsPage name="Sets" />
 					</Route>
 					<Route path="/sets/:id">
-						<SetCardsPage name="Set " />
+						<SetCardsPage />
 					</Route>
 				</IonRouterOutlet>
 			</IonSplitPane>
