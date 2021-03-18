@@ -11,6 +11,7 @@ import {
 } from "@ionic/react";
 import SetsData from "../components/Sets/SetsData";
 import { getSets } from "../services/Api";
+import Loader from "../components/Loader";
 
 interface Title {
 	name: string;
@@ -19,11 +20,14 @@ interface Title {
 export const SetsPage = ({ name }: Title) => {
 	const [searchText, setSearchText] = useState("");
 	const [sets, setSets] = useState<any[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getSetsFromApi = async () => {
+			setIsLoading(true);
 			const data = await getSets();
 			setSets(data.data);
+			setIsLoading(false);
 		};
 		getSetsFromApi();
 	}, []);
@@ -44,10 +48,13 @@ export const SetsPage = ({ name }: Title) => {
 					</IonButtons>
 					<IonTitle>{name}</IonTitle>
 				</IonToolbar>
-				<IonSearchbar
-					value={searchText}
-					onIonChange={(e) => setSearchText(e.detail.value!)}
-				></IonSearchbar>
+				<div className="bg-black">
+					<IonSearchbar
+						value={searchText}
+						onIonChange={(e) => setSearchText(e.detail.value!)}
+					></IonSearchbar>
+				</div>
+				<Loader loading={isLoading} />
 			</IonHeader>
 
 			<IonContent fullscreen>

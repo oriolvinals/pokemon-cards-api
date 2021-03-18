@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 import SetCardsData from "../components/SetCards/SetCardsData";
 import SetInfo from "../components/SetCards/SetInfo";
 import { getSet, getCardsFromSet } from "../services/Api";
+import Loader from "../components/Loader";
 
 interface ParamType {
 	id: string;
@@ -29,17 +30,20 @@ const SetCardsPage = ({ name }: Title) => {
 
 	const [set, setSetInfo] = useState<any>({});
 	const [cards, setCards] = useState<any[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getSetInfoFromApi = async () => {
+			setIsLoading(true);
+
 			const data = await getSet(id);
 			setSetInfo(data.data);
 		};
 
 		const getSetCardsFromApi = async () => {
 			const data = await getCardsFromSet(id);
-			//console.log(await data.data);
 			setCards(data.data);
+			setIsLoading(false);
 		};
 
 		getSetInfoFromApi();
@@ -62,10 +66,13 @@ const SetCardsPage = ({ name }: Title) => {
 					</IonButtons>
 					<IonTitle>{name}</IonTitle>
 				</IonToolbar>
-				<IonSearchbar
-					value={searchText}
-					onIonChange={(e) => setSearchText(e.detail.value!)}
-				></IonSearchbar>
+				<div className="bg-red-300">
+					<IonSearchbar
+						value={searchText}
+						onIonChange={(e) => setSearchText(e.detail.value!)}
+					></IonSearchbar>
+				</div>
+				<Loader loading={isLoading} />
 			</IonHeader>
 
 			<IonContent fullscreen>
