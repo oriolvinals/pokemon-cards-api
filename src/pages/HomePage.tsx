@@ -1,9 +1,36 @@
-import { IonPage } from "@ionic/react";
-import Header from "./layout/Header";
-const HomePage = () => {
+import {
+	IonButtons,
+	IonContent,
+	IonHeader,
+	IonMenuButton,
+	IonPage,
+	IonTitle,
+	IonToolbar,
+} from "@ionic/react";
+
+interface Title {
+	name: string;
+}
+
+const HomePage = ({ name }: Title) => {
 	return (
 		<IonPage>
-			<Header />
+			<IonHeader>
+				<IonToolbar>
+					<IonButtons slot="start">
+						<IonMenuButton />
+					</IonButtons>
+					<IonTitle>Home</IonTitle>
+				</IonToolbar>
+			</IonHeader>
+			<IonContent fullscreen>
+				<IonHeader collapse="condense">
+					<IonToolbar>
+						<IonTitle size="large">Home</IonTitle>
+					</IonToolbar>
+				</IonHeader>
+				<div>hola</div>
+			</IonContent>
 		</IonPage>
 	);
 };

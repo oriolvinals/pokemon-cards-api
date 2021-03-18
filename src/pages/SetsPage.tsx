@@ -1,10 +1,22 @@
-import { useEffect, useState } from "react";
-import { IonPage, IonSearchbar } from "@ionic/react";
-import Header from "./layout/Header";
-import SetsData from "../components/SetsData";
+import React, { useEffect, useState } from "react";
+import {
+	IonButtons,
+	IonContent,
+	IonHeader,
+	IonMenuButton,
+	IonPage,
+	IonSearchbar,
+	IonTitle,
+	IonToolbar,
+} from "@ionic/react";
+import SetsData from "../components/Sets/SetsData";
 import { getSets } from "../services/Api";
 
-const SetsPage = () => {
+interface Title {
+	name: string;
+}
+
+export const SetsPage = ({ name }: Title) => {
 	const [searchText, setSearchText] = useState("");
 	const [sets, setSets] = useState<any[]>([]);
 
@@ -25,12 +37,28 @@ const SetsPage = () => {
 
 	return (
 		<IonPage>
-			<Header />
-			<IonSearchbar
-				value={searchText}
-				onIonChange={(e) => setSearchText(e.detail.value!)}
-			></IonSearchbar>
-			<SetsData sets={getFilteredSets()} />
+			<IonHeader>
+				<IonToolbar>
+					<IonButtons slot="start">
+						<IonMenuButton />
+					</IonButtons>
+					<IonTitle>{name}</IonTitle>
+				</IonToolbar>
+				<IonSearchbar
+					value={searchText}
+					onIonChange={(e) => setSearchText(e.detail.value!)}
+				></IonSearchbar>
+			</IonHeader>
+
+			<IonContent fullscreen>
+				<IonHeader collapse="condense">
+					<IonToolbar>
+						<IonTitle size="large">{name}</IonTitle>
+					</IonToolbar>
+				</IonHeader>
+
+				<SetsData sets={getFilteredSets()} />
+			</IonContent>
 		</IonPage>
 	);
 };

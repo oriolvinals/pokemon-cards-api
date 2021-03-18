@@ -1,7 +1,8 @@
 import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet, IonPage } from "@ionic/react";
+import { IonApp, IonRouterOutlet, IonPage, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import "./index.css";
+import Menu from "./components/Menu";
 import HomePage from "./pages/HomePage";
 import SetsPage from "./pages/SetsPage";
 import SetCardsPage from "./pages/SetCardsPage";
@@ -27,15 +28,25 @@ import "./theme/variables.css";
 
 const App: React.FC = () => (
 	<IonApp>
-		<IonPage>
-			<IonReactRouter>
-				<IonRouterOutlet>
-					<Route exact path="/" component={HomePage} />
-					<Route exact path="/set/:id" component={SetCardsPage} />
-					<Route exact path="/sets" component={SetsPage} />
+		<IonReactRouter>
+			<IonSplitPane contentId="main">
+				<Menu />
+				<IonRouterOutlet id="main">
+					<Route path="/" exact={true}>
+						<HomePage name="Home" />
+					</Route>
+					<Route path="/set/:id" exact={true}>
+						<SetCardsPage name="Set info" />
+					</Route>
+					<Route path="/search" exact={true}>
+						<SetsPage name="Sets" />
+					</Route>
+					<Route path="/advanced" exact={true}>
+						<SetsPage name="Sets" />
+					</Route>
 				</IonRouterOutlet>
-			</IonReactRouter>
-		</IonPage>
+			</IonSplitPane>
+		</IonReactRouter>
 	</IonApp>
 );
 

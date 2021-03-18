@@ -1,4 +1,3 @@
-import { IonContent } from "@ionic/react";
 import CardPreview from "./CardPreview";
 
 type Cards = {

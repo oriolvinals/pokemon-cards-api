@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { IonPage, IonSearchbar } from "@ionic/react";
-import Header from "./layout/Header";
+import {
+	IonButtons,
+	IonHeader,
+	IonMenuButton,
+	IonPage,
+	IonSearchbar,
+	IonTitle,
+	IonToolbar,
+} from "@ionic/react";
 import { IonContent } from "@ionic/react";
 import { useParams } from "react-router";
-import SetCardsData from "../components/SetCardsData";
-import SetInfo from "../components/SetInfo";
+import SetCardsData from "../components/SetCards/SetCardsData";
+import SetInfo from "../components/SetCards/SetInfo";
 import { getSet, getCardsFromSet } from "../services/Api";
 
 interface ParamType {
 	id: string;
 }
 
-const SetCardsPage = () => {
+interface Title {
+	name: string;
+}
+
+const SetCardsPage = ({ name }: Title) => {
 	const { id } = useParams<ParamType>();
 
 	const [searchText, setSearchText] = useState("");
@@ -44,12 +55,25 @@ const SetCardsPage = () => {
 
 	return (
 		<IonPage>
-			<Header />
-			<IonSearchbar
-				value={searchText}
-				onIonChange={(e) => setSearchText(e.detail.value!)}
-			></IonSearchbar>
-			<IonContent>
+			<IonHeader>
+				<IonToolbar>
+					<IonButtons slot="start">
+						<IonMenuButton />
+					</IonButtons>
+					<IonTitle>{name}</IonTitle>
+				</IonToolbar>
+				<IonSearchbar
+					value={searchText}
+					onIonChange={(e) => setSearchText(e.detail.value!)}
+				></IonSearchbar>
+			</IonHeader>
+
+			<IonContent fullscreen>
+				<IonHeader collapse="condense">
+					<IonToolbar>
+						<IonTitle size="large">{name}</IonTitle>
+					</IonToolbar>
+				</IonHeader>
 				<SetInfo info={set} />
 				<SetCardsData cards={getFilteredCards()} />
 			</IonContent>
