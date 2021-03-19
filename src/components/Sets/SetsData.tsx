@@ -1,8 +1,8 @@
 import SetPreview from "./SetPreview";
 
-interface Sets  {
+interface Sets {
 	sets: Array<any>;
-};
+}
 
 const SetsData = ({ sets }: Sets) => {
 	if (sets.length > 0) {
@@ -16,12 +16,18 @@ const SetsData = ({ sets }: Sets) => {
 						releaseDate={element.releaseDate}
 						logo={element.images.logo}
 						symbol={element.images.symbol}
+						legalities={element.legalities}
 					/>
 				))}
 			</div>
 		);
 	} else {
-		return <div className="text-gray-500 text-2xl text-center fixed z-50 inset-1/4 flex items-center justify-center"> No hi ha dades disponibles</div>;
+		return (
+			<div className="text-gray-500 text-2xl text-center fixed z-50 inset-1/4 flex items-center justify-center">
+				{" "}
+				No hi ha dades disponibles
+			</div>
+		);
 	}
 };
 

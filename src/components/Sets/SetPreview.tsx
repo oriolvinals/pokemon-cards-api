@@ -6,9 +6,17 @@ type SetProps = {
 	releaseDate: string;
 	logo: string;
 	symbol: string;
+	legalities: any;
 };
 
-const SetPreview = ({ id, name, releaseDate, logo, symbol }: SetProps) => {
+const SetPreview = ({
+	id,
+	name,
+	releaseDate,
+	logo,
+	symbol,
+	legalities,
+}: SetProps) => {
 	return (
 		<Link
 			to={{ pathname: "/sets/" + id }}
