@@ -23,13 +23,19 @@ const HomePage = ({ name }: Title) => {
 					<IonTitle>{name}</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
+			<IonContent>
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div>Home page</div>
+				<div className="absolute w-full h-full bg-green-300">
+					<img
+						className="w-full h-full"
+						src="/assets/images/home.jpg"
+						alt="Charmander"
+					/>
+				</div>
 			</IonContent>
 		</IonPage>
 	);
