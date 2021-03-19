@@ -11,6 +11,7 @@ const SetCardsData = ({ cards }: Cards) => {
 				<CardPreview
 					key={i}
 					image={element.images.small}
+					id={element.id}
 					name={element.name}
 				/>
 			))}
