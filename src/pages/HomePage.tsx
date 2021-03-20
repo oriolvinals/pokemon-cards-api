@@ -7,6 +7,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
+import Search from "../components/Home/Search";
 
 interface Title {
 	name: string;
@@ -29,12 +30,13 @@ const HomePage = ({ name }: Title) => {
 						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="absolute w-full h-full bg-green-300">
+				<div className="absolute w-full h-full bg-green-300 ">
 					<img
-						className="w-full h-full"
+						className="absolute w-full h-full object-cover"
 						src="/assets/images/home.jpg"
 						alt="Charmander"
 					/>
+					<Search />
 				</div>
 			</IonContent>
 		</IonPage>

@@ -38,4 +38,16 @@ const getCard = async (id: string) => {
 	return await response.json();
 };
 
-export { getSets, getSet, getCardsFromSet, getCard };
+const getSearch = async (query: string) => {
+	const response = await fetch(
+		"https://api.pokemontcg.io/v2/cards?q=name:" + query,
+		{
+			headers: {
+				"X-Api-Key": api_key,
+			},
+		}
+	);
+	return await response.json();
+};
+
+export { getSets, getSet, getCardsFromSet, getCard, getSearch };
