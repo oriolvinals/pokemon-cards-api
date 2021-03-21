@@ -21,6 +21,7 @@ export const SetsPage = ({ name }: Title) => {
 	const [searchText, setSearchText] = useState("");
 	const [sets, setSets] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [dataLoading, setDataLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getSetsFromApi = async () => {
@@ -28,6 +29,7 @@ export const SetsPage = ({ name }: Title) => {
 			const data = await getSets();
 			setSets(data.data);
 			setIsLoading(false);
+			setDataLoading(true);
 		};
 		getSetsFromApi();
 	}, []);
@@ -64,7 +66,7 @@ export const SetsPage = ({ name }: Title) => {
 					</IonToolbar>
 				</IonHeader>
 
-				<SetsData sets={getFilteredSets()} />
+				<SetsData sets={getFilteredSets()} data={dataLoading} />
 			</IonContent>
 		</IonPage>
 	);
