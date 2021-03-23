@@ -27,11 +27,11 @@ const SetCardsPage = () => {
 	const [set, setSetInfo] = useState<any>({});
 	const [cards, setCards] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [dataLoading, setDataLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getSetInfoFromApi = async () => {
 			setIsLoading(true);
-
 			const data = await getSet(id);
 			setSetInfo(data.data);
 		};
@@ -40,6 +40,7 @@ const SetCardsPage = () => {
 			const data = await getCardsFromSet(id);
 			setCards(data.data);
 			setIsLoading(false);
+			setDataLoading(true);
 		};
 
 		getSetInfoFromApi();
@@ -78,7 +79,10 @@ const SetCardsPage = () => {
 					</IonToolbar>
 				</IonHeader>
 				<SetInfo info={set} />
-				<SetCardsData cards={getFilteredCards()} />
+				<SetCardsData
+					cards={getFilteredCards()}
+					loading={dataLoading}
+				/>
 			</IonContent>
 		</IonPage>
 	);
