@@ -41,6 +41,13 @@ const appPages: AppPage[] = [
 		iosIcon: albumsOutline,
 		mdIcon: albumsOutline,
 	},
+	{
+		title: "Advanced",
+		url: "/advanced",
+		iosIcon: albumsOutline,
+		mdIcon: albumsOutline,
+	},
+
 ];
 
 const Menu: React.FC = () => {
