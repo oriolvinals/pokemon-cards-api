@@ -8,6 +8,7 @@ import {
 	IonToolbar,
 } from "@ionic/react";
 import React from "react";
+import SearchA from "../components/Advanced/SearchA";
 
 interface Title {
 	name: string;
@@ -31,7 +32,7 @@ const AdvancedPage = ({ name }: Title) => {
 						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div>Hola </div>
+				<SearchA />
 			</IonContent>
 		</IonPage>
 	);
