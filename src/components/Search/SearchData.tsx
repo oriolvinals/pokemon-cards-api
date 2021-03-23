@@ -1,4 +1,5 @@
 import CardPreview from "../SetCards/CardPreview";
+import Error from "../Error";
 
 type Cards = {
 	cards: Array<any>;
@@ -19,7 +20,7 @@ const SearchData = ({ cards }: Cards) => {
 			</div>
 		);
 	} else {
-		return <div>Not found</div>;
+		return <Error msg="No data found" />;
 	}
 };
 

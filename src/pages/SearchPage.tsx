@@ -7,8 +7,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import { card } from "ionicons/icons";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import SearchData from "../components/Search/SearchData";

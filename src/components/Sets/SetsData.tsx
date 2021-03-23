@@ -1,4 +1,5 @@
 import SetPreview from "./SetPreview";
+import Error from "../Error";
 
 interface Sets {
 	sets: Array<any>;
@@ -24,11 +25,7 @@ const SetsData = ({ sets, data }: Sets) => {
 				</div>
 			);
 		} else {
-			return (
-				<div className="text-gray-500 text-2xl text-center fixed z-50 inset-1/4 flex items-center justify-center">
-					No hi ha dades disponibles
-				</div>
-			);
+			return <Error msg="No data available" />;
 		}
 	} else {
 		return <></>;
