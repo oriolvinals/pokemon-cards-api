@@ -25,6 +25,7 @@ const SearchPage = ({ name }: Title) => {
 	const { query }: Params = useParams();
 	const [cards, setQuery] = useState<any>({});
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [dataLoading, setDataLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const getSearchFromApi = async () => {
@@ -32,6 +33,7 @@ const SearchPage = ({ name }: Title) => {
 			const data = await getSearch(query);
 			setQuery(data.data);
 			setIsLoading(false);
+			setDataLoading(true);
 		};
 		getSearchFromApi();
 	}, [query]);
@@ -53,7 +55,7 @@ const SearchPage = ({ name }: Title) => {
 						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<SearchData cards={cards} />
+				<SearchData cards={cards} data={dataLoading} />
 			</IonContent>
 		</IonPage>
 	);
