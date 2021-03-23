@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
+import PriceCards from "../components/Cards/PriceCards"
 
 interface ParamType {
 	id: string;
@@ -50,6 +51,7 @@ const CardPage = () => {
 					</IonToolbar>
 				</IonHeader>
 				<div>{card.name}</div>
+				<PriceCards tcgplayer={card.tcgplayer} />
 			</IonContent>
 		</IonPage>
 	);
