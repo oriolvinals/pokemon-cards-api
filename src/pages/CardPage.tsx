@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
-import PriceCards from "../components/Cards/PriceCards"
+import PriceCards from "../components/Cards/PriceCards";
 
 interface ParamType {
 	id: string;
@@ -20,13 +20,16 @@ const CardPage = () => {
 	const { id } = useParams<ParamType>();
 	const [card, setCard] = useState<any>([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [dataLoading, setDataLoading] = useState(false);
 
 	useEffect(() => {
 		const getCardInfo = async () => {
 			setIsLoading(true);
 			const data = await getCard(id);
+			console.log(await data);
 			setCard(data.data);
 			setIsLoading(false);
+			setDataLoading(true);
 		};
 
 		getCardInfo();
@@ -51,7 +54,7 @@ const CardPage = () => {
 					</IonToolbar>
 				</IonHeader>
 				<div>{card.name}</div>
-				<PriceCards tcgplayer={card.tcgplayer} />
+				<PriceCards data={card} loading={dataLoading} />
 			</IonContent>
 		</IonPage>
 	);
