@@ -8,6 +8,7 @@ import SetsPage from "./pages/SetsPage";
 import SetCardsPage from "./pages/SetCardsPage";
 import CardPage from "./pages/CardPage";
 import SearchPage from "./pages/SearchPage";
+import AdvancedPage from "./pages/AdvancedPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -48,6 +49,9 @@ const App: React.FC = () => (
 					</Route>
 					<Route path="/search/:query" exact={true}>
 						<SearchPage name="Search" />
+					</Route>
+					<Route path="/advanced">
+						<AdvancedPage name="Advanced search" />
 					</Route>
 				</IonRouterOutlet>
 			</IonSplitPane>
