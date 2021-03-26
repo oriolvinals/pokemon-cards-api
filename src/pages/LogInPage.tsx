@@ -7,6 +7,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
+import LoginA from "../components/Login/LoginA"
 
 interface Title {
 	name: string;
@@ -31,7 +32,7 @@ const LogInPage = ({ name }: Title) => {
 					</IonToolbar>
 				</IonHeader>
 
-				<div>login</div>
+				<LoginA/>
 			</IonContent>
 		</IonPage>
 	);
