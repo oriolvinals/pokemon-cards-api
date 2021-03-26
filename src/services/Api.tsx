@@ -40,7 +40,7 @@ const getCard = async (id: string) => {
 
 const getSearch = async (query: string) => {
 	const response = await fetch(
-		"https://api.pokemontcg.io/v2/cards?q=name:" + query,
+		"https://api.pokemontcg.io/v2/cards?q=" + query,
 		{
 			headers: {
 				"X-Api-Key": api_key,

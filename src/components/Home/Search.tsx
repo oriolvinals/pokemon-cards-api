@@ -9,7 +9,7 @@ const Search = () => {
 
 	const search = () => {
 		if (searchText.length <= 3) setShowToast(true);
-		else history.push("/search/" + searchText);
+		else history.push("/search/name:" + searchText);
 	};
 	return (
 		<div className="fixed z-50 w-full h-full flex items-center justify-center flex-col bg-black bg-opacity-60">

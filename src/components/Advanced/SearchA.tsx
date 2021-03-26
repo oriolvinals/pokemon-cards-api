@@ -7,11 +7,18 @@ import {
 	IonLabel,
 	IonRange,
 } from "@ionic/react";
-import React from "react";
 import RangeValue from "./RangeValue";
+import { useHistory } from "react-router";
+import { search } from "ionicons/icons";
 
 const SearchA = () => {
+	const history = useHistory();
+
 	const array = ["a", "b"];
+
+	const Search = () => {
+		history.push("/search/name:");
+	};
 	return (
 		<div>
 			<Input name="Card Name" />
@@ -22,7 +29,7 @@ const SearchA = () => {
 			<Input name="Artist" />
 			<SelectOption name="Rarity" options={array} />
 			<RangeValue min={100} max={200} />
-			<IonButton>Search</IonButton>
+			<IonButton onClick={Search}>Search</IonButton>
 		</div>
 	);
 };
