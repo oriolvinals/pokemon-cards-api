@@ -54,16 +54,21 @@ const CardPage = () => {
 						<IonTitle size="large">{card.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="py-6 px-10">{card.name}</div>
-				<InfoCard
-					name={card.name}
-					supertype={card.supertype}
-					subtypes={card.subtypes}
-					hp={card.hp}
-					type={card.type}
-					loading={dataLoading}
-				/>
-				<PriceCard tcgplayer={card.tcgplayer} loading={dataLoading} />
+				<div className="p-3">
+					<InfoCard
+						name={card.name}
+						supertype={card.supertype}
+						subtypes={card.subtypes}
+						hp={card.hp}
+						type={card.type}
+						image={card.images.large}
+						loading={dataLoading}
+					/>
+					<PriceCard
+						tcgplayer={card.tcgplayer}
+						loading={dataLoading}
+					/>
+				</div>
 			</IonContent>
 		</IonPage>
 	);
