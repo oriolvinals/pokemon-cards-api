@@ -41,7 +41,7 @@ const SetPreview = ({
 				<div className="pl-4 text-gray-400">
 					<p className="font-bold	text-2xl">{name}</p>
 					<p className="text-md text-gray-500">
-						Released {(new Date(releaseDate)).toLocaleDateString()}
+						Released {new Date(releaseDate).toLocaleDateString()}
 					</p>
 				</div>
 			</div>
