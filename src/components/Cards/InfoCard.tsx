@@ -5,19 +5,9 @@ interface Info {
 	hp: number;
 	type: Array<string>;
 	image: string;
-	loading: boolean;
 }
 
-const InfoCard = ({
-	name,
-	supertype,
-	subtypes,
-	hp,
-	type,
-	image,
-	loading,
-}: Info) => {
-	if (!loading) return <></>;
+const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 	return (
 		<div>
 			{supertype}

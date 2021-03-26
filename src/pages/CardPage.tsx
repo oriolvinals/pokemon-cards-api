@@ -35,6 +35,31 @@ const CardPage = () => {
 
 		getCardInfo();
 	}, [id]);
+
+	if (!dataLoading)
+		return (
+			<IonPage>
+				<IonHeader>
+					<IonToolbar>
+						<IonButtons slot="start">
+							<IonMenuButton />
+						</IonButtons>
+						<IonTitle>{card.name}</IonTitle>
+					</IonToolbar>
+
+					<Loader loading={isLoading} />
+				</IonHeader>
+
+				<IonContent fullscreen>
+					<IonHeader collapse="condense">
+						<IonToolbar>
+							<IonTitle size="large">{card.name}</IonTitle>
+						</IonToolbar>
+					</IonHeader>
+				</IonContent>
+			</IonPage>
+		);
+
 	return (
 		<IonPage>
 			<IonHeader>
@@ -44,7 +69,6 @@ const CardPage = () => {
 					</IonButtons>
 					<IonTitle>{card.name}</IonTitle>
 				</IonToolbar>
-
 				<Loader loading={isLoading} />
 			</IonHeader>
 
@@ -54,21 +78,15 @@ const CardPage = () => {
 						<IonTitle size="large">{card.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="p-3">
-					<InfoCard
-						name={card.name}
-						supertype={card.supertype}
-						subtypes={card.subtypes}
-						hp={card.hp}
-						type={card.type}
-						image={card.images.large}
-						loading={dataLoading}
-					/>
-					<PriceCard
-						tcgplayer={card.tcgplayer}
-						loading={dataLoading}
-					/>
-				</div>
+				<InfoCard
+					name={card.name}
+					supertype={card.supertype}
+					subtypes={card.subtypes}
+					hp={card.hp}
+					type={card.type}
+					image={card.images.small}
+				/>
+				<PriceCard tcgplayer={card.tcgplayer} />
 			</IonContent>
 		</IonPage>
 	);
