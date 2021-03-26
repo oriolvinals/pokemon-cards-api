@@ -28,6 +28,8 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import LogInPage from "./pages/LogInPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const App: React.FC = () => (
 	<IonApp>
@@ -37,6 +39,12 @@ const App: React.FC = () => (
 				<IonRouterOutlet id="main">
 					<Route path="/" exact={true}>
 						<HomePage name="Home" />
+					</Route>
+					<Route path="/login">
+						<LogInPage name="Log In" />
+					</Route>
+					<Route path="/register">
+						<RegisterPage name="Register" />
 					</Route>
 					<Route path="/sets" exact={true}>
 						<SetsPage name="Sets" />

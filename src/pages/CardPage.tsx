@@ -12,7 +12,7 @@ import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
 import PriceCard from "../components/Cards/PriceCard";
-import InfoCard from "../components/Cards/InfoCard"
+import InfoCard from "../components/Cards/InfoCard";
 
 interface ParamType {
 	id: string;
@@ -55,7 +55,14 @@ const CardPage = () => {
 					</IonToolbar>
 				</IonHeader>
 				<div className="py-6 px-10">{card.name}</div>
-				<InfoCard name={card.name} supertype={card.supertype}  subtypes={card.subtypes}  hp={card.hp} type={card.type} loading={dataLoading}/>
+				<InfoCard
+					name={card.name}
+					supertype={card.supertype}
+					subtypes={card.subtypes}
+					hp={card.hp}
+					type={card.type}
+					loading={dataLoading}
+				/>
 				<PriceCard tcgplayer={card.tcgplayer} loading={dataLoading} />
 			</IonContent>
 		</IonPage>
