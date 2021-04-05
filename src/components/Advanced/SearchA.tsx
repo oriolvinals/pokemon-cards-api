@@ -66,6 +66,10 @@ const SearchA = () => {
 		return " (" + sub.join(" OR ") + ")";
 	};
 
+	const queryRange = (min: number, max: number, name: string) => {
+		return " " + name + ":[" + min + " TO " + max + "]";
+	};
+
 	const [name, setName] = useState("");
 	const handleName = (evt: any) => {
 		if (evt.target.value.length === 0) setName("");
@@ -148,6 +152,22 @@ const SearchA = () => {
 		else setRaritiesSelect(queryMultiple("rarity", evt.target.value));
 	};
 
+	const [rangeHp, setRangeHp] = useState("");
+	const handleHp = (evt: any) => {
+		const lower = evt.target.value.lower;
+		const upper = evt.target.value.upper;
+		const query = queryRange(lower, upper, "hp");
+		setRangeHp(query);
+	};
+
+	const [rangeCost, setRangeCost] = useState("");
+	const handleCost = (evt: any) => {
+		const lower = evt.target.value.lower;
+		const upper = evt.target.value.upper;
+		const query = queryRange(lower, upper, "retreatCost");
+		setRangeCost(query);
+	};
+
 	const Search = () => {
 		history.push(
 			"/search/" +
@@ -159,6 +179,7 @@ const SearchA = () => {
 				resistancesSelect +
 				setsSelect +
 				raritiesSelect +
+				rangeHp +
 				artist
 		);
 	};
@@ -189,7 +210,12 @@ const SearchA = () => {
 					options={types}
 					placeholder="Pick a type"
 				/>
-				<RangeValue name="HP" min={0} max={340} />
+				<RangeValue
+					onRangeChange={handleHp}
+					name="HP"
+					min={0}
+					max={340}
+				/>
 				<SelectOption
 					onSelectChange={handleWeaknesses}
 					name="Weaknesses"
@@ -202,7 +228,12 @@ const SearchA = () => {
 					options={types}
 					placeholder="Pick a type"
 				/>
-				<RangeValue name="Retreat Cost" min={0} max={5} />
+				<RangeValue
+					onRangeChange={handleCost}
+					name="Retreat Cost"
+					min={0}
+					max={5}
+				/>
 				<SelectOption
 					onSelectChange={handleSets}
 					name="Sets"
