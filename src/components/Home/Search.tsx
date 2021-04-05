@@ -31,7 +31,7 @@ const Search = () => {
 				Search
 			</IonButton>
 			<IonLabel className="bold text-sm p-5 text-green-300 w-full text-center">
-				Try "venusaur" or "subtypes:mega" or simply Browse By Set
+				Try "venusaur" or "charizard" or simply Browse By Set
 			</IonLabel>
 			<IonToast
 				isOpen={showToast}

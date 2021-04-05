@@ -59,12 +59,14 @@ const SearchA = () => {
 
 	const history = useHistory();
 
+	const queryMultiple = (name: string, array: Array<any>) => {
+		const sub: Array<string> = array.map((elem: string) => {
+			return name + ":" + elem;
+		});
+		return " (" + sub.join(" OR ") + ")";
+	};
+
 	const [name, setName] = useState("");
-	const [supertypesSelect, setSupertypesSelect] = useState("");
-	const [subtypesSelect, setSubtypesSelect] = useState("");
-
-	const [artist, setArtist] = useState("");
-
 	const handleName = (evt: any) => {
 		if (evt.target.value.length === 0) setName("");
 		else
@@ -75,6 +77,7 @@ const SearchA = () => {
 			);
 	};
 
+	const [artist, setArtist] = useState("");
 	const handleArtist = (evt: any) => {
 		if (evt.target.value.length === 0) setArtist("");
 		else
@@ -85,37 +88,78 @@ const SearchA = () => {
 			);
 	};
 
+	const [supertypesSelect, setSupertypesSelect] = useState("");
 	const handleSupertype = (evt: any) => {
 		if (evt.target.value.length === 0) setSupertypesSelect("");
 		else if (evt.target.value.length === 1)
 			setSupertypesSelect(" supertype:" + evt.target.value);
-		else {
-			const sub: Array<string> = evt.target.value.map(
-				(supertype: string) => {
-					return "supertype:" + supertype;
-				}
-			);
-			setSupertypesSelect(" (" + sub.join(" OR ") + ")");
-		}
+		else setSupertypesSelect(queryMultiple("supertype", evt.target.value));
 	};
 
+	const [subtypesSelect, setSubtypesSelect] = useState("");
 	const handleSubtype = (evt: any) => {
 		if (evt.target.value.length === 0) setSubtypesSelect("");
 		else if (evt.target.value.length === 1)
 			setSubtypesSelect(" subtypes:" + evt.target.value);
-		else {
-			const sub: Array<string> = evt.target.value.map(
-				(subtype: string) => {
-					return "subtypes:" + subtype;
-				}
+		else setSubtypesSelect(queryMultiple("subtypes", evt.target.value));
+	};
+
+	const [typesSelect, setTypesSelect] = useState("");
+	const handleType = (evt: any) => {
+		if (evt.target.value.length === 0) setTypesSelect("");
+		else if (evt.target.value.length === 1)
+			setTypesSelect(" types:" + evt.target.value);
+		else setTypesSelect(queryMultiple("types", evt.target.value));
+	};
+
+	const [weaknessesSelect, setWeaknessessSelect] = useState("");
+	const handleWeaknesses = (evt: any) => {
+		if (evt.target.value.length === 0) setWeaknessessSelect("");
+		else if (evt.target.value.length === 1)
+			setWeaknessessSelect(" weaknesses:" + evt.target.value);
+		else
+			setWeaknessessSelect(queryMultiple("weaknesses", evt.target.value));
+	};
+
+	const [resistancesSelect, setResistancesSelect] = useState("");
+	const handleResistances = (evt: any) => {
+		if (evt.target.value.length === 0) setResistancesSelect("");
+		else if (evt.target.value.length === 1)
+			setResistancesSelect(" resistances:" + evt.target.value);
+		else
+			setResistancesSelect(
+				queryMultiple("resistances", evt.target.value)
 			);
-			setSubtypesSelect(" (" + sub.join(" OR ") + ")");
-		}
+	};
+
+	const [setsSelect, setSetsSelect] = useState("");
+	const handleSets = (evt: any) => {
+		if (evt.target.value.length === 0) setSetsSelect("");
+		else if (evt.target.value.length === 1)
+			setSetsSelect(" set.name:" + evt.target.value);
+		else setSetsSelect(queryMultiple("set.name", evt.target.value));
+	};
+
+	const [raritiesSelect, setRaritiesSelect] = useState("");
+	const handleRarities = (evt: any) => {
+		if (evt.target.value.length === 0) setRaritiesSelect("");
+		else if (evt.target.value.length === 1)
+			setRaritiesSelect(" rarity:" + evt.target.value);
+		else setRaritiesSelect(queryMultiple("rarity", evt.target.value));
 	};
 
 	const Search = () => {
 		history.push(
-			"/search/" + name + supertypesSelect + subtypesSelect + artist
+			"/search/" +
+				name +
+				supertypesSelect +
+				subtypesSelect +
+				typesSelect +
+				weaknessesSelect +
+				resistancesSelect +
+				setsSelect +
+				raritiesSelect +
+				artist
 		);
 	};
 
@@ -140,40 +184,38 @@ const SearchA = () => {
 					placeholder="Pick a subtype"
 				/>
 				<SelectOption
+					onSelectChange={handleType}
 					name="Types"
 					options={types}
 					placeholder="Pick a type"
 				/>
 				<RangeValue name="HP" min={0} max={340} />
 				<SelectOption
+					onSelectChange={handleWeaknesses}
 					name="Weaknesses"
 					options={types}
 					placeholder="Pick a type"
 				/>
 				<SelectOption
+					onSelectChange={handleResistances}
 					name="Resistances"
 					options={types}
 					placeholder="Pick a type"
 				/>
 				<RangeValue name="Retreat Cost" min={0} max={5} />
-
 				<SelectOption
-					name="Set"
+					onSelectChange={handleSets}
+					name="Sets"
 					options={sets}
 					placeholder="Pick a set"
 				/>
-				<SelectOption
-					name="Series"
-					options={array}
-					placeholder="Pick a series"
-				/>
-
 				<Input
 					onTextChange={handleArtist}
 					name="Artist"
 					placeholder="Enter an Artist"
 				/>
 				<SelectOption
+					onSelectChange={handleRarities}
 					name="Rarity"
 					options={rarities}
 					placeholder="Pick a rarity"
