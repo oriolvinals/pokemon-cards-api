@@ -87,7 +87,16 @@ const SearchA = () => {
 
 	const handleSupertype = (evt: any) => {
 		if (evt.target.value.length === 0) setSupertypesSelect("");
-		else setSupertypesSelect(" supertype:" + evt.target.value);
+		else if (evt.target.value.length === 1)
+			setSupertypesSelect(" supertype:" + evt.target.value);
+		else {
+			const sub: Array<string> = evt.target.value.map(
+				(supertype: string) => {
+					return "supertype:" + supertype;
+				}
+			);
+			setSupertypesSelect(" (" + sub.join(" OR ") + ")");
+		}
 	};
 
 	const handleSubtype = (evt: any) => {
