@@ -1,15 +1,25 @@
 import { IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
-import React from "react";
 
 interface Props {
+	onSelectChange?: any;
 	name: string;
 	options: Array<any>;
+	placeholder: string;
 }
-const SelectOption = ({ name, options }: Props) => {
+const SelectOption = ({
+	onSelectChange,
+	name,
+	options,
+	placeholder,
+}: Props) => {
 	return (
 		<IonItem>
 			<IonLabel>{name}</IonLabel>
-			<IonSelect>
+			<IonSelect
+				placeholder={placeholder}
+				multiple
+				onIonChange={onSelectChange}
+			>
 				{options.map((element, i) => (
 					<IonSelectOption key={i}>{element}</IonSelectOption>
 				))}

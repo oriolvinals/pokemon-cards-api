@@ -8,8 +8,13 @@ const Search = () => {
 	const history = useHistory();
 
 	const search = () => {
-		if (searchText.length <= 3) setShowToast(true);
-		else history.push("/search/name:" + searchText);
+		if (searchText.length === 0) setShowToast(true);
+		else
+			history.push(
+				"/search/name:" +
+					searchText.trim().replace(/ /g, "").replace(":", "") +
+					"*"
+			);
 	};
 	return (
 		<div className="fixed z-50 w-full h-full flex items-center justify-center flex-col bg-black bg-opacity-60">

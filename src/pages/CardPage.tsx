@@ -83,7 +83,7 @@ const CardPage = () => {
 					supertype={card.supertype}
 					subtypes={card.subtypes}
 					hp={card.hp}
-					type={card.type}
+					type={card.types[0]}
 					image={card.images.small}
 				/>
 				<PriceCard tcgplayer={card.tcgplayer} />
