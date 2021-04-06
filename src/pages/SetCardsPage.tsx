@@ -63,7 +63,7 @@ const SetCardsPage = () => {
 					</IonButtons>
 					<IonTitle>{set.name}</IonTitle>
 				</IonToolbar>
-				<div className="bg-red-300">
+				<div className="bg-black">
 					<IonSearchbar
 						value={searchText}
 						onIonChange={(e) => setSearchText(e.detail.value!)}
@@ -78,6 +78,13 @@ const SetCardsPage = () => {
 						<IonTitle size="large">{set.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
+				<div className="absolute w-full h-full bg-green-300 ">
+					<img
+						className="absolute w-full h-full object-cover"
+						src="/assets/images/fons.png"
+						alt="Charmander"
+					/>
+				</div>
 				<SetInfo info={set} />
 				<SetCardsData
 					cards={getFilteredCards()}

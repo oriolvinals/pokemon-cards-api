@@ -4,15 +4,16 @@ interface Info {
 
 const PriceCard = ({ tcgplayer }: Info) => {
 	return (
-		<div className="py-6 px-10">
-			<span className="text-2xl">{tcgplayer.url}</span>
-			<div>
-				<p className="text-2xl">{tcgplayer.updatedAt}</p>
-			</div>
+		<div className="px-10">
+			<span className="text-2xl font-bold"><a href={tcgplayer.url}>Buy Now From TCGplayer</a></span>
+			<div className="py-4">
+				<p className="text-lg">Last Updated: {new Date(tcgplayer.updatedAt).toLocaleDateString()}</p>
+			</div>s
 			<div>
 				{Object.keys(tcgplayer.prices).map(
 					(element: any, i: number) => (
 						<div key={i}>
+							<table>
 							{element}
 							{Object.keys(tcgplayer.prices[element]).map(
 								(type: any, j: number) => (
@@ -22,6 +23,7 @@ const PriceCard = ({ tcgplayer }: Info) => {
 									</div>
 								)
 							)}
+							</table>
 						</div>
 					)
 				)}

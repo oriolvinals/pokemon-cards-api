@@ -23,7 +23,7 @@ const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 					/>
 				</div>
 			</div>
-			<img src={image} alt={name + " card"} className="w-80" />
+			<img src={image} alt={name + " card"} className="w-96 rounded-xl" />
 		</div>
 	);
 };

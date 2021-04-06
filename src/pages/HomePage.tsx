@@ -34,7 +34,8 @@ const HomePage = ({ name }: Title) => {
 					<img
 						className="absolute w-full h-full object-cover"
 						src="/assets/images/home.jpg"
-						alt="Charmander"
+						alt="Charmander" 
+						
 					/>
 					<Search />
 				</div>
