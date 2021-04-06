@@ -78,18 +78,13 @@ const SetCardsPage = () => {
 						<IonTitle size="large">{set.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="absolute w-full h-full bg-green-300 ">
-					<img
-						className="absolute w-full h-full object-cover"
-						src="/assets/images/fons.png"
-						alt="Charmander"
+				<div className="bg-gray-900">
+					<SetInfo info={set} />
+					<SetCardsData
+						cards={getFilteredCards()}
+						loading={dataLoading}
 					/>
 				</div>
-				<SetInfo info={set} />
-				<SetCardsData
-					cards={getFilteredCards()}
-					loading={dataLoading}
-				/>
 			</IonContent>
 		</IonPage>
 	);

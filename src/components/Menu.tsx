@@ -7,19 +7,10 @@ import {
 	IonListHeader,
 	IonMenu,
 	IonMenuToggle,
-	IonNote,
 } from "@ionic/react";
 
-import { Link, useLocation } from "react-router-dom";
-import {
-	mailOutline,
-	mailSharp,
-	paperPlaneOutline,
-	paperPlaneSharp,
-	planetOutline,
-	albumsOutline,
-	albums,
-} from "ionicons/icons";
+import { useLocation } from "react-router-dom";
+import { planet, albums, apps, people } from "ionicons/icons";
 
 interface AppPage {
 	url: string;
@@ -32,22 +23,27 @@ const appPages: AppPage[] = [
 	{
 		title: "Home",
 		url: "/",
-		iosIcon: planetOutline,
-		mdIcon: planetOutline,
+		iosIcon: planet,
+		mdIcon: planet,
 	},
 	{
 		title: "Sets",
 		url: "/sets",
-		iosIcon: albumsOutline,
-		mdIcon: albumsOutline,
+		iosIcon: albums,
+		mdIcon: albums,
 	},
 	{
 		title: "Advanced",
 		url: "/advanced",
-		iosIcon: albumsOutline,
-		mdIcon: albumsOutline,
+		iosIcon: apps,
+		mdIcon: apps,
 	},
-
+	{
+		title: "Login",
+		url: "/login",
+		iosIcon: people,
+		mdIcon: people,
+	},
 ];
 
 const Menu: React.FC = () => {
@@ -57,7 +53,7 @@ const Menu: React.FC = () => {
 		<IonMenu contentId="main" type="overlay">
 			<IonContent>
 				<IonList id="inbox-list">
-					<IonListHeader>Menu</IonListHeader>
+					<IonListHeader>Pokemon Card App</IonListHeader>
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>

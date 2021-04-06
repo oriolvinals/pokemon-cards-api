@@ -27,7 +27,7 @@ export const SetsPage = ({ name }: Title) => {
 		const getSetsFromApi = async () => {
 			setIsLoading(true);
 			const data = await getSets();
-			setSets(data.data);
+			setSets(data.data.reverse());
 			setIsLoading(false);
 			setDataLoading(true);
 		};

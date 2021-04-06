@@ -11,16 +11,22 @@ import React from "react";
 
 const LoginA = () => {
 	return (
-		<div className="text-center p-5 w-full h-full flex flex-col space-y-3 justify-center px-10">
+		<div className="fixed z-50 w-full h-full flex items-center justify-center flex-col bg-black bg-opacity-60">
 			<div>
 				<p className="p-3">Email</p>
-				<IonInput type="email" className="bg-gray-400 rounded-md bg-opacity-25" />
+				<IonInput
+					type="email"
+					className="bg-gray-400 rounded-md bg-opacity-25"
+				/>
 			</div>
 			<div>
 				<p className="p-3">Password</p>
-				<IonInput type="password" className="bg-gray-400 rounded-md bg-opacity-25" />
+				<IonInput
+					type="password"
+					className="bg-gray-400 rounded-md bg-opacity-25"
+				/>
 			</div>
-			<IonButton >Login</IonButton>
+			<IonButton>Login</IonButton>
 		</div>
 	);
 };
