@@ -14,6 +14,8 @@ import { getCard } from "../services/Api";
 import PriceCard from "../components/Cards/PriceCard";
 import InfoCard from "../components/Cards/InfoCard";
 import Attacks from "../components/Cards/Attacks";
+import Rules from "../components/Cards/Rules";
+import AdditionalInfo from "../components/Cards/AdditionalInfo";
 
 interface ParamType {
 	id: string;
@@ -90,6 +92,8 @@ const CardPage = () => {
 					/>
 					<PriceCard tcgplayer={card.tcgplayer} />
 					<Attacks attacks={card.attacks} />
+					<Rules rules={card.rules} />
+					<AdditionalInfo />
 				</div>
 			</IonContent>
 		</IonPage>
