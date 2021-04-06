@@ -19,8 +19,6 @@ const SearchA = () => {
 	const [rarities, setRarities] = useState<Array<string>>([]);
 	const [types, setTypes] = useState<Array<string>>([]);
 
-	const array = ["a", "b"];
-
 	useEffect(() => {
 		const getSupertyesFromApi = async () => {
 			const data = await getSupertypes();
@@ -164,7 +162,7 @@ const SearchA = () => {
 	const handleCost = (evt: any) => {
 		const lower = evt.target.value.lower;
 		const upper = evt.target.value.upper;
-		const query = queryRange(lower, upper, "retreatCost");
+		const query = queryRange(lower, upper, "convertedRetreatCost");
 		setRangeCost(query);
 	};
 
@@ -180,6 +178,7 @@ const SearchA = () => {
 				setsSelect +
 				raritiesSelect +
 				rangeHp +
+				rangeCost +
 				artist
 		);
 	};
