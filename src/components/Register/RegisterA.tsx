@@ -2,7 +2,7 @@ import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginA = () => {
+const RegisterA = () => {
 	const [showToast, setShowToast] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ const LoginA = () => {
 	return (
 		<div className="fixed z-50 w-full h-full flex items-center justify-center flex-col bg-black bg-opacity-60 space-y-3">
 			<IonLabel className="bold -mt-48 text-xl p-5 w-full text-center">
-				Login
+				Register
 			</IonLabel>
 			<IonItem className="rounded-xl w-10/12">
 				<IonInput
@@ -33,14 +33,14 @@ const LoginA = () => {
 				/>
 			</IonItem>
 			<IonButton className="mt-3 rounded-xl" onClick={login}>
-				Login
+				Register
 			</IonButton>
 			<IonLabel>
 				<Link
-					to="/register"
+					to="/login"
 					className="bold text-sm p-5 text-white w-full text-center"
 				>
-					Don't have an account? Register here
+					Already registered? Login here
 				</Link>
 			</IonLabel>
 			<IonToast
@@ -54,4 +54,4 @@ const LoginA = () => {
 	);
 };
 
-export default LoginA;
+export default RegisterA;

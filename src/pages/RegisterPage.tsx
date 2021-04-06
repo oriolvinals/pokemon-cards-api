@@ -7,6 +7,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
+import RegisterA from "../components/Register/RegisterA";
 
 interface Title {
 	name: string;
@@ -31,7 +32,14 @@ const RegisterPage = ({ name }: Title) => {
 					</IonToolbar>
 				</IonHeader>
 
-				<div>register</div>
+				<div className="absolute w-full h-full">
+					<img
+						className="absolute w-full h-full object-cover"
+						src="/assets/images/fons.png"
+						alt="Charmander"
+					/>
+					<RegisterA />
+				</div>
 			</IonContent>
 		</IonPage>
 	);
