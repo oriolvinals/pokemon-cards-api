@@ -10,7 +10,7 @@ const PriceCard = ({ tcgplayer }: Info) => {
 		{ type: "market", color: "text-purple-500" },
 	];
 	return (
-		<div className="px-10">
+		<div>
 			<p className="text-2xl">Prices</p>
 			<hr className="bg-white mb-2" />
 			<span className="text-sm font-bold">
@@ -34,7 +34,7 @@ const PriceCard = ({ tcgplayer }: Info) => {
 											<>
 												{type !== "directLow" && (
 													<div key={j}>
-														<p className="capitalize text-sm">
+														<p className="capitalize text-xs">
 															{element
 																.split(
 																	/(?=[A-Z])/

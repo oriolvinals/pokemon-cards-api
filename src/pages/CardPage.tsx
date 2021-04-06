@@ -13,6 +13,7 @@ import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
 import PriceCard from "../components/Cards/PriceCard";
 import InfoCard from "../components/Cards/InfoCard";
+import Attacks from "../components/Cards/Attacks";
 
 interface ParamType {
 	id: string;
@@ -78,15 +79,18 @@ const CardPage = () => {
 						<IonTitle size="large">{card.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<InfoCard
-					name={card.name}
-					supertype={card.supertype}
-					subtypes={card.subtypes}
-					hp={card.hp}
-					type={card.types[0]}
-					image={card.images.small}
-				/>
-				<PriceCard tcgplayer={card.tcgplayer} />
+				<div className="px-7 grid grid-cols-1 gap-y-5 my-5">
+					<InfoCard
+						name={card.name}
+						supertype={card.supertype}
+						subtypes={card.subtypes}
+						hp={card.hp}
+						type={card.types}
+						image={card.images.small}
+					/>
+					<PriceCard tcgplayer={card.tcgplayer} />
+					<Attacks attacks={card.attacks} />
+				</div>
 			</IonContent>
 		</IonPage>
 	);
