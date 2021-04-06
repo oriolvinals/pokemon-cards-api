@@ -9,7 +9,7 @@ interface Info {
 
 const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 	return (
-		<div className="p-10">
+		<div className="px-10 py-5">
 			<div className="flex mb-2 text-md justify-between">
 				<p>
 					{supertype} - {subtypes}
