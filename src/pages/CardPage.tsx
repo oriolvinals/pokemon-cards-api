@@ -86,7 +86,7 @@ const CardPage = () => {
 						subtypes={card.subtypes}
 						hp={card.hp}
 						type={card.types}
-						image={card.images.small}
+						image={card.images.large}
 					/>
 					<PriceCard tcgplayer={card.tcgplayer} />
 					<Attacks attacks={card.attacks} />
