@@ -22,7 +22,7 @@ const Legalities = ({ legalities }: Props) => {
 										key={l}
 										className="grid grid-cols-2 text-center text-xs"
 									>
-										<p className="bg-gray-700 py-2 rounded-l-lg capitalize">
+										<p className="bg-gray-700 py-1 rounded-l-lg capitalize">
 											{l}
 										</p>
 										{legalities[l] && (
@@ -33,7 +33,7 @@ const Legalities = ({ legalities }: Props) => {
 															bg.name ===
 															legalities[l]
 													)?.bg +
-													" py-2 rounded-r-lg " +
+													" py-1 rounded-r-lg " +
 													colors.find(
 														(text) =>
 															text.name ===
@@ -45,7 +45,7 @@ const Legalities = ({ legalities }: Props) => {
 											</p>
 										)}
 										{!legalities[l] && (
-											<p className="bg-gray-200 text-black py-2 rounded-r-lg">
+											<p className="bg-gray-200 text-black py-1 rounded-r-lg">
 												Not Legal
 											</p>
 										)}

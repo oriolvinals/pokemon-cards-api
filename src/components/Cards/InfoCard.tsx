@@ -6,6 +6,7 @@ interface Info {
 	type?: Array<string>;
 	image: string;
 	flavor: string;
+	holo: boolean;
 }
 
 const InfoCard = ({
@@ -16,6 +17,7 @@ const InfoCard = ({
 	type,
 	image,
 	flavor,
+	holo,
 }: Info) => {
 	return (
 		<div className="mt-2">

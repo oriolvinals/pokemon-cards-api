@@ -10,11 +10,7 @@ const Set = ({ set }: Props) => {
 			<hr className="bg-white mb-2" />
 			<div className="flex flex-col items-center">
 				<Link to={"/sets/" + set.id}>
-					<img
-						className="h-24"
-						src={set.images.logo}
-						alt={set.name + " logo"}
-					/>
+					<img src={set.images.logo} alt={set.name + " logo"} />
 				</Link>
 			</div>
 		</div>
