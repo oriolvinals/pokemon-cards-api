@@ -3,7 +3,7 @@ interface Props {
 }
 
 const Rule = ({ rule }: Props) => {
-	return <div className="flex flex-col space-y-2 text-sm">{rule}</div>;
+	return <div className="flex flex-col space-y-2 text-xs">{rule}</div>;
 };
 
 export default Rule;

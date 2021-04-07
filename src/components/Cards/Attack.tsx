@@ -21,7 +21,7 @@ const Attack = ({ attack }: Props) => {
 				</div>
 				{attack.damage && <p>{attack.damage}</p>}
 			</div>
-			<p className="text-sm">{attack.text}</p>
+			<p className="text-xs">{attack.text}</p>
 		</div>
 	);
 };

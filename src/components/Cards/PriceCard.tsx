@@ -23,7 +23,7 @@ const PriceCard = ({ tcgplayer }: Info) => {
 				</p>
 			</div>
 
-			<div className="space-y-5 mt-4">
+			<div className="space-y-3 mt-4">
 				{Object.keys(tcgplayer.prices).map(
 					(element: any, i: number) => (
 						<div key={element}>

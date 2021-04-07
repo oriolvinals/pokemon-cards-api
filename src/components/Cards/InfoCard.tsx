@@ -9,12 +9,11 @@ interface Info {
 
 const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 	return (
-		<div>
-			<h1 className="text-center text-xl">{name}</h1>
+		<div className="mt-2">
 			<img
 				src={image}
 				alt={name + " card"}
-				className="w-96 rounded-xl shadow-2xl"
+				className="w-96 rounded-md shadow-2xl"
 			/>
 			<div className="flex mt-3 text-md justify-between">
 				<p>
