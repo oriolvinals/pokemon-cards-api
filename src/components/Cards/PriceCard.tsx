@@ -26,14 +26,14 @@ const PriceCard = ({ tcgplayer }: Info) => {
 			<div className="space-y-5 mt-4">
 				{Object.keys(tcgplayer.prices).map(
 					(element: any, i: number) => (
-						<div key={i}>
+						<div key={element}>
 							<div className="grid grid-cols-2 border-collapse gap-y-1">
 								{Object.keys(tcgplayer.prices[element]).map(
 									(type: any, j: number) => {
 										return (
-											<>
+											<div key={type}>
 												{type !== "directLow" && (
-													<div key={j}>
+													<div>
 														<p className="capitalize text-xs">
 															{element
 																.split(
@@ -58,7 +58,7 @@ const PriceCard = ({ tcgplayer }: Info) => {
 														</p>
 													</div>
 												)}
-											</>
+											</div>
 										);
 									}
 								)}

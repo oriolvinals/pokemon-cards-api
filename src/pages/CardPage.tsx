@@ -16,6 +16,8 @@ import InfoCard from "../components/Cards/InfoCard";
 import Attacks from "../components/Cards/Attacks";
 import Rules from "../components/Cards/Rules";
 import AdditionalInfo from "../components/Cards/AdditionalInfo";
+import Abilities from "../components/Cards/Abilities";
+import Set from "../components/Cards/Set";
 
 interface ParamType {
 	id: string;
@@ -81,7 +83,7 @@ const CardPage = () => {
 						<IonTitle size="large">{card.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="px-7 grid grid-cols-1 gap-y-5 my-5">
+				<div className="px-7 grid grid-cols-1 gap-y-4 mb-5">
 					<InfoCard
 						name={card.name}
 						supertype={card.supertype}
@@ -91,9 +93,19 @@ const CardPage = () => {
 						image={card.images.large}
 					/>
 					<PriceCard tcgplayer={card.tcgplayer} />
+					<Abilities abilities={card.abilities} />
 					<Attacks attacks={card.attacks} />
 					<Rules rules={card.rules} />
-					<AdditionalInfo />
+					<AdditionalInfo
+						weaknesses={card.weaknesses}
+						resistances={card.resistances}
+						retreatCost={card.retreatCost}
+						artist={card.artist}
+						rarity={card.rarity}
+						number={card.number}
+						totalNumber={card.set.printedTotal}
+					/>
+					<Set set={card.set} />
 				</div>
 			</IonContent>
 		</IonPage>

@@ -10,9 +10,9 @@ const Attacks = ({ attacks }: Props) => {
 				<div>
 					<p className="text-2xl">Attacks</p>
 					<hr className="bg-white mb-2" />
-					<div className="flex flex-col space-y-7">
-						{attacks.map((attack) => {
-							return <Attack attack={attack} key={attack} />;
+					<div className="flex flex-col space-y-5">
+						{attacks.map((attack, i) => {
+							return <Attack attack={attack} key={i} />;
 						})}
 					</div>
 				</div>

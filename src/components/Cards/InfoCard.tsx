@@ -10,9 +10,16 @@ interface Info {
 const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 	return (
 		<div>
-			<div className="flex mb-3 text-md justify-between">
+			<h1 className="text-center text-xl">{name}</h1>
+			<img
+				src={image}
+				alt={name + " card"}
+				className="w-96 rounded-xl shadow-2xl"
+			/>
+			<div className="flex mt-3 text-md justify-between">
 				<p>
-					{supertype} - {subtypes.join(", ")}
+					{supertype} -{" "}
+					<span className="text-xs">{subtypes.join(", ")}</span>
 				</p>
 				{type && (
 					<div className="flex space-x-2 justify-center items-center">
@@ -26,11 +33,6 @@ const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 					</div>
 				)}
 			</div>
-			<img
-				src={image}
-				alt={name + " card"}
-				className="w-96 rounded-xl shadow-2xl"
-			/>
 		</div>
 	);
 };
