@@ -5,9 +5,18 @@ interface Info {
 	hp: number;
 	type?: Array<string>;
 	image: string;
+	flavor: string;
 }
 
-const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
+const InfoCard = ({
+	name,
+	supertype,
+	subtypes,
+	hp,
+	type,
+	image,
+	flavor,
+}: Info) => {
 	return (
 		<div className="mt-2">
 			<img
@@ -32,6 +41,11 @@ const InfoCard = ({ name, supertype, subtypes, hp, type, image }: Info) => {
 					</div>
 				)}
 			</div>
+			{flavor && (
+				<p className="text-center mt-3 text-xs italic font-thin">
+					“ {flavor} ”
+				</p>
+			)}
 		</div>
 	);
 };

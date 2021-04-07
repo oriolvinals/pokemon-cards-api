@@ -91,6 +91,7 @@ const CardPage = () => {
 						hp={card.hp}
 						type={card.types}
 						image={card.images.large}
+						flavor={card.flavorText}
 					/>
 					<PriceCard tcgplayer={card.tcgplayer} />
 					<Abilities abilities={card.abilities} />
