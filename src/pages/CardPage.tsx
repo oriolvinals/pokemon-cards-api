@@ -18,6 +18,7 @@ import Rules from "../components/Cards/Rules";
 import AdditionalInfo from "../components/Cards/AdditionalInfo";
 import Abilities from "../components/Cards/Abilities";
 import Set from "../components/Cards/Set";
+import Legalities from "../components/Cards/Legalities";
 
 interface ParamType {
 	id: string;
@@ -107,6 +108,7 @@ const CardPage = () => {
 						totalNumber={card.set.printedTotal}
 					/>
 					<Set set={card.set} />
+					<Legalities legalities={card.legalities} />
 				</div>
 			</IonContent>
 		</IonPage>

@@ -125,11 +125,13 @@ const SearchA = () => {
 		if (evt.target.value.length === 0) setWeaknessessSelect("");
 		else if (evt.target.value.length === 1)
 			setWeaknessessSelect(
-				" weaknesses:" +
+				" weaknesses.type:" +
 					evt.target.value.toString().replace(/ /g, "\\ ")
 			);
 		else
-			setWeaknessessSelect(queryMultiple("weaknesses", evt.target.value));
+			setWeaknessessSelect(
+				queryMultiple("weaknesses.type", evt.target.value)
+			);
 	};
 
 	const [resistancesSelect, setResistancesSelect] = useState("");
