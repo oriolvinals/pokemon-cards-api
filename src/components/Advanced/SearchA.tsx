@@ -59,7 +59,7 @@ const SearchA = () => {
 
 	const queryMultiple = (name: string, array: Array<any>) => {
 		const sub: Array<string> = array.map((elem: string) => {
-			return name + ":" + elem;
+			return name + ":" + elem.toString().replace(/ /g, "\\ ");
 		});
 		return " (" + sub.join(" OR ") + ")";
 	};
@@ -94,7 +94,9 @@ const SearchA = () => {
 	const handleSupertype = (evt: any) => {
 		if (evt.target.value.length === 0) setSupertypesSelect("");
 		else if (evt.target.value.length === 1)
-			setSupertypesSelect(" supertype:" + evt.target.value);
+			setSupertypesSelect(
+				" supertype:" + evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else setSupertypesSelect(queryMultiple("supertype", evt.target.value));
 	};
 
@@ -102,7 +104,9 @@ const SearchA = () => {
 	const handleSubtype = (evt: any) => {
 		if (evt.target.value.length === 0) setSubtypesSelect("");
 		else if (evt.target.value.length === 1)
-			setSubtypesSelect(" subtypes:" + evt.target.value);
+			setSubtypesSelect(
+				" subtypes:" + evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else setSubtypesSelect(queryMultiple("subtypes", evt.target.value));
 	};
 
@@ -110,7 +114,9 @@ const SearchA = () => {
 	const handleType = (evt: any) => {
 		if (evt.target.value.length === 0) setTypesSelect("");
 		else if (evt.target.value.length === 1)
-			setTypesSelect(" types:" + evt.target.value);
+			setTypesSelect(
+				" types:" + evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else setTypesSelect(queryMultiple("types", evt.target.value));
 	};
 
@@ -118,7 +124,10 @@ const SearchA = () => {
 	const handleWeaknesses = (evt: any) => {
 		if (evt.target.value.length === 0) setWeaknessessSelect("");
 		else if (evt.target.value.length === 1)
-			setWeaknessessSelect(" weaknesses:" + evt.target.value);
+			setWeaknessessSelect(
+				" weaknesses:" +
+					evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else
 			setWeaknessessSelect(queryMultiple("weaknesses", evt.target.value));
 	};
@@ -127,7 +136,10 @@ const SearchA = () => {
 	const handleResistances = (evt: any) => {
 		if (evt.target.value.length === 0) setResistancesSelect("");
 		else if (evt.target.value.length === 1)
-			setResistancesSelect(" resistances:" + evt.target.value);
+			setResistancesSelect(
+				" resistances:" +
+					evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else
 			setResistancesSelect(
 				queryMultiple("resistances", evt.target.value)
@@ -138,7 +150,9 @@ const SearchA = () => {
 	const handleSets = (evt: any) => {
 		if (evt.target.value.length === 0) setSetsSelect("");
 		else if (evt.target.value.length === 1)
-			setSetsSelect(" set.name:" + evt.target.value);
+			setSetsSelect(
+				" set.name:" + evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else setSetsSelect(queryMultiple("set.name", evt.target.value));
 	};
 
@@ -146,7 +160,9 @@ const SearchA = () => {
 	const handleRarities = (evt: any) => {
 		if (evt.target.value.length === 0) setRaritiesSelect("");
 		else if (evt.target.value.length === 1)
-			setRaritiesSelect(" rarity:" + evt.target.value);
+			setRaritiesSelect(
+				" rarity:" + evt.target.value.toString().replace(/ /g, "\\ ")
+			);
 		else setRaritiesSelect(queryMultiple("rarity", evt.target.value));
 	};
 
