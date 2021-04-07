@@ -7,10 +7,10 @@ type Cards = {
 };
 
 const SetCardsData = ({ cards, loading }: Cards) => {
-	if (loading) {
-		if (cards.length > 0) {
-			return (
-				<div className="px-5 grid grid-cols-2">
+	return (
+		<>
+			{loading && cards.length > 0 && (
+				<div className="px-5 grid grid-cols-2 bg-transparent">
 					{cards.map((element, i) => (
 						<CardPreview
 							key={i}
@@ -20,13 +20,10 @@ const SetCardsData = ({ cards, loading }: Cards) => {
 						/>
 					))}
 				</div>
-			);
-		} else {
-			return <Error msg="No cards" />;
-		}
-	} else {
-		return <></>;
-	}
+			)}{" "}
+			{loading && cards.length === 0 && <Error msg="No cards" />}
+		</>
+	);
 };
 
 export default SetCardsData;

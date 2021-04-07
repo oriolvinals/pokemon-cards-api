@@ -78,7 +78,7 @@ const SetCardsPage = () => {
 						<IonTitle size="large">{set.name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div className="bg-gradient-to-r from-gray-900 to-blue-900">
+				<div className="bg-gradient-to-r from-gray-900 to-blue-900 min-w-full">
 					<SetInfo info={set} />
 					<SetCardsData
 						cards={getFilteredCards()}
