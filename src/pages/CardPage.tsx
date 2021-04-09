@@ -50,6 +50,8 @@ const CardPage = () => {
 		console.log(holo);
 	};
 
+	const nonHolo = ["Common", "Uncommon", "Rare"];
+
 	return (
 		<>
 			{dataLoading && (
@@ -61,12 +63,14 @@ const CardPage = () => {
 							</IonButtons>
 							<div className="flex flex-row justify-between mr-4">
 								<IonTitle>{card.name}</IonTitle>
-								<IonIcon
-									onClick={handleHolo}
-									size="large"
-									md={planet}
-									ios={planet}
-								/>
+								{!nonHolo.includes(card.rarity) && (
+									<IonIcon
+										onClick={handleHolo}
+										size="large"
+										md={planet}
+										ios={planet}
+									/>
+								)}
 							</div>
 						</IonToolbar>
 						<Loader loading={isLoading} />
@@ -76,12 +80,14 @@ const CardPage = () => {
 						<IonHeader collapse="condense">
 							<IonToolbar>
 								<IonTitle size="large">{card.name}</IonTitle>
-								<IonIcon
-									onClick={handleHolo}
-									size="large"
-									md={planet}
-									ios={planet}
-								/>
+								{!nonHolo.includes(card.rarrity) && (
+									<IonIcon
+										onClick={handleHolo}
+										size="large"
+										md={planet}
+										ios={planet}
+									/>
+								)}
 							</IonToolbar>
 						</IonHeader>
 						<div className="px-7 grid grid-cols-1 gap-y-4 pb-5 bg-gradient-to-r from-blue-900 to-gray-900">

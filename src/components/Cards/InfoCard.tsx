@@ -20,12 +20,15 @@ const InfoCard = ({
 	holo,
 }: Info) => {
 	return (
-		<div className="mt-2">
+		<div className="mt-5">
 			<img
 				src={image}
 				alt={name + " card"}
-				className="w-96 rounded-md shadow-2xl"
+				className={
+					(holo ? "card " : "") + "w-96 rounded-md shadow-2xl card"
+				}
 			/>
+
 			<div className="flex mt-3 text-md justify-between">
 				<p>
 					{supertype} -{" "}
