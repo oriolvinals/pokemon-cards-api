@@ -39,7 +39,7 @@ const InfoCard = ({
 						<p className="text-sm">{hp} HP</p>
 
 						<img
-							src={"/assets/images/types/" + type + ".png"}
+							src={"/assets/images/types/" + type[0] + ".png"}
 							alt=""
 							className="w-6 h-6"
 						/>
