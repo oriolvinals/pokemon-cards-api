@@ -21,14 +21,9 @@ const InfoCard = ({
 }: Info) => {
 	return (
 		<div className="mt-5">
-			<img
-				src={image}
-				alt={name + " card"}
-				className={
-					(holo ? "card " : "") + "w-96 rounded-md shadow-2xl card"
-				}
-			/>
-
+			<div className={holo ? "card " : ""}>
+				<img src={image} alt={name + " card"} className="rounded-md" />
+			</div>
 			<div className="flex mt-3 text-md justify-between">
 				<p>
 					{supertype} -{" "}
