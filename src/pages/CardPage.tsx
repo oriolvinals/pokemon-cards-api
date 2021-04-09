@@ -8,7 +8,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import { planet } from "ionicons/icons";
+import { sparkles, sparklesOutline } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
@@ -62,13 +62,15 @@ const CardPage = () => {
 								<IonMenuButton />
 							</IonButtons>
 							<div className="flex flex-row justify-between mr-4">
-								<IonTitle>{card.name}</IonTitle>
+								<IonTitle className="text-center">
+									{card.name}
+								</IonTitle>
 								{!nonHolo.includes(card.rarity) && (
 									<IonIcon
 										onClick={handleHolo}
 										size="large"
-										md={planet}
-										ios={planet}
+										md={holo ? sparkles : sparklesOutline}
+										ios={holo ? sparkles : sparklesOutline}
 									/>
 								)}
 							</div>
@@ -84,8 +86,8 @@ const CardPage = () => {
 									<IonIcon
 										onClick={handleHolo}
 										size="large"
-										md={planet}
-										ios={planet}
+										md={holo ? sparkles : sparklesOutline}
+										ios={holo ? sparkles : sparklesOutline}
 									/>
 								)}
 							</IonToolbar>
