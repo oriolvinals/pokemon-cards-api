@@ -10,7 +10,7 @@ const SetCardsData = ({ cards, loading }: Cards) => {
 	return (
 		<>
 			{loading && cards.length > 0 && (
-				<div className="px-5 grid grid-cols-2 bg-transparent">
+				<div className="px-5 grid gap-4 grid-cols-2 bg-transparent">
 					{cards.map((element, i) => (
 						<CardPreview
 							key={i}
