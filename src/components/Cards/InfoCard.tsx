@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { act } from "react-dom/test-utils";
 
 interface Info {
 	name: string;
@@ -26,14 +25,12 @@ const InfoCard = ({
 	const [style, setStyle] = useState("");
 	const handleMouseMove = (e: any) => {
 		if (holo) {
-			console.log(e);
 			const l = e.nativeEvent.offsetX;
 			const t = e.nativeEvent.offsetY;
 			const h = e.screenY;
 			const w = e.screenX;
 			const lp = Math.abs(Math.floor((100 / w) * l) - 100);
 			const tp = Math.abs(Math.floor((100 / h) * t) - 100);
-
 			const bg = `background-position: ${lp}% ${tp}%;`;
 			setStyle(`.card.active:before { ${bg} }`);
 			setActive(false);

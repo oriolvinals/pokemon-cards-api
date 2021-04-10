@@ -9,6 +9,8 @@ import SetCardsPage from "./pages/SetCardsPage";
 import CardPage from "./pages/CardPage";
 import SearchPage from "./pages/SearchPage";
 import AdvancedPage from "./pages/AdvancedPage";
+import LogInPage from "./pages/LogInPage";
+import RegisterPage from "./pages/RegisterPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -32,8 +34,6 @@ import "tailwindcss/utilities.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import LogInPage from "./pages/LogInPage";
-import RegisterPage from "./pages/RegisterPage";
 
 const App: React.FC = () => (
 	<IonApp>

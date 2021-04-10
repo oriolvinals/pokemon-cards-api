@@ -1,6 +1,8 @@
 import {
 	IonButtons,
 	IonContent,
+	IonFab,
+	IonFabButton,
 	IonHeader,
 	IonIcon,
 	IonMenuButton,
@@ -8,8 +10,8 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import { sparkles, sparklesOutline } from "ionicons/icons";
-import { useEffect, useState } from "react";
+import { planet, sparkles, sparklesOutline } from "ionicons/icons";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
@@ -46,7 +48,6 @@ const CardPage = () => {
 
 	const handleHolo = () => {
 		setHolo(!holo);
-		console.log(holo);
 	};
 
 	const nonHolo = ["Common", "Uncommon", "Rare"];
@@ -117,6 +118,19 @@ const CardPage = () => {
 							/>
 							<Set set={card.set} />
 							<Legalities legalities={card.legalities} />
+							<IonFab
+								vertical="bottom"
+								horizontal="end"
+								slot="fixed"
+								className="bg-transparent"
+							>
+								<IonFabButton>
+									<IonIcon
+										icon="/assets/icon/fav.svg"
+										className="h-10 w-10"
+									/>
+								</IonFabButton>
+							</IonFab>
 						</div>
 					</IonContent>
 				</IonPage>

@@ -23,26 +23,26 @@ const appPages: AppPage[] = [
 	{
 		title: "Home",
 		url: "/",
-		iosIcon: planet,
-		mdIcon: planet,
+		iosIcon: "/assets/icon/menu/home.svg",
+		mdIcon: "/assets/icon/menu/home.svg",
 	},
 	{
 		title: "Sets",
 		url: "/sets",
-		iosIcon: albums,
-		mdIcon: albums,
+		iosIcon: "/assets/icon/menu/sets.svg",
+		mdIcon: "/assets/icon/menu/sets.svg",
 	},
 	{
 		title: "Advanced",
 		url: "/advanced",
-		iosIcon: apps,
-		mdIcon: apps,
+		iosIcon: "/assets/icon/menu/advanced.svg",
+		mdIcon: "/assets/icon/menu/advanced.svg",
 	},
 	{
 		title: "Login",
 		url: "/login",
-		iosIcon: people,
-		mdIcon: people,
+		iosIcon: "/assets/icon/menu/login.svg",
+		mdIcon: "/assets/icon/menu/login.svg",
 	},
 ];
 
@@ -58,13 +58,18 @@ const Menu: React.FC = () => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
 								<IonItem
-									className="bg-green-600"
+									color={
+										location.pathname === appPage.url
+											? "light"
+											: ""
+									}
 									routerLink={appPage.url}
 								>
 									<IonIcon
 										slot="start"
-										ios={appPage.iosIcon}
-										md={appPage.mdIcon}
+										md={appPage.iosIcon}
+										ios={appPage.mdIcon}
+										className="h-10 w-10 mr-6"
 									></IonIcon>
 									<IonLabel>{appPage.title}</IonLabel>
 								</IonItem>
