@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { act } from "react-dom/test-utils";
+
 interface Info {
 	name: string;
 	supertype: string;
@@ -19,10 +22,41 @@ const InfoCard = ({
 	flavor,
 	holo,
 }: Info) => {
+	const [active, setActive] = useState(false);
+	const [style, setStyle] = useState("");
+	const handleMouseMove = (e: any) => {
+		if (holo) {
+			console.log(e);
+			const l = e.nativeEvent.offsetX;
+			const t = e.nativeEvent.offsetY;
+			const h = e.screenY;
+			const w = e.screenX;
+			const lp = Math.abs(Math.floor((100 / w) * l) - 100);
+			const tp = Math.abs(Math.floor((100 / h) * t) - 100);
+
+			const bg = `background-position: ${lp}% ${tp}%;`;
+			setStyle(`.card.active:before { ${bg} }`);
+			setActive(false);
+			setActive(true);
+		} else {
+			setActive(false);
+		}
+	};
+
+	const handleMouseOut = (e: any) => {
+		if (holo) {
+			setActive(false);
+		}
+	};
 	return (
 		<div className="mt-5">
-			<div className={holo ? "card " : ""}>
+			<div
+				className={(holo ? "card " : "") + (active ? "active" : "")}
+				onMouseMove={handleMouseMove}
+				onMouseOut={handleMouseOut}
+			>
 				<img src={image} alt={name + " card"} className="rounded-md" />
+				<style className="hover">{style}</style>
 			</div>
 			<div className="flex mt-3 text-md justify-between">
 				<p>

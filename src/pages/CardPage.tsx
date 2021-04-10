@@ -36,7 +36,6 @@ const CardPage = () => {
 		const getCardInfo = async () => {
 			setIsLoading(true);
 			const data = await getCard(id);
-			console.log(await data);
 			setCard(data.data);
 			setIsLoading(false);
 			setDataLoading(true);
