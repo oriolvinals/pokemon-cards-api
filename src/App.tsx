@@ -35,40 +35,42 @@ import "tailwindcss/utilities.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-const App: React.FC = () => (
-	<IonApp>
-		<IonReactRouter>
-			<IonSplitPane contentId="main">
-				<Menu />
-				<IonRouterOutlet id="main">
-					<Route path="/" exact={true}>
-						<HomePage name="Home" />
-					</Route>
-					<Route path="/login">
-						<LogInPage name="Log In" />
-					</Route>
-					<Route path="/register">
-						<RegisterPage name="Register" />
-					</Route>
-					<Route path="/sets" exact={true}>
-						<SetsPage name="Sets" />
-					</Route>
-					<Route path="/sets/:id">
-						<SetCardsPage />
-					</Route>
-					<Route path="/cards/:id">
-						<CardPage />
-					</Route>
-					<Route path="/search/:query" exact={true}>
-						<SearchPage name="Search" />
-					</Route>
-					<Route path="/advanced">
-						<AdvancedPage name="Advanced search" />
-					</Route>
-				</IonRouterOutlet>
-			</IonSplitPane>
-		</IonReactRouter>
-	</IonApp>
-);
+const App = () => {
+	return (
+		<IonApp>
+			<IonReactRouter>
+				<IonSplitPane contentId="main">
+					<Menu />
+					<IonRouterOutlet id="main">
+						<Route path="/" exact={true}>
+							<HomePage name="Home" />
+						</Route>
+						<Route path="/login">
+							<LogInPage name="Log In" />
+						</Route>
+						<Route path="/register">
+							<RegisterPage name="Register" />
+						</Route>
+						<Route path="/sets" exact={true}>
+							<SetsPage name="Sets" />
+						</Route>
+						<Route path="/sets/:id">
+							<SetCardsPage />
+						</Route>
+						<Route path="/cards/:id">
+							<CardPage />
+						</Route>
+						<Route path="/search/:query" exact={true}>
+							<SearchPage name="Search" />
+						</Route>
+						<Route path="/advanced">
+							<AdvancedPage name="Advanced search" />
+						</Route>
+					</IonRouterOutlet>
+				</IonSplitPane>
+			</IonReactRouter>
+		</IonApp>
+	);
+};
 
 export default App;

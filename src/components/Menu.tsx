@@ -10,7 +10,7 @@ import {
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
-import { planet, albums, apps, people } from "ionicons/icons";
+import { auth } from "../services/Firebase";
 
 interface AppPage {
 	url: string;
@@ -46,8 +46,16 @@ const appPages: AppPage[] = [
 	},
 ];
 
-const Menu: React.FC = () => {
+const Menu = () => {
 	const location = useLocation();
+
+	auth.onAuthStateChanged(function (user) {
+		if (user) {
+			console.log(user.uid);
+		} else {
+			console.log("not logged");
+		}
+	});
 
 	return (
 		<IonMenu contentId="main" type="overlay">

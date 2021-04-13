@@ -7,7 +7,6 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import React from "react";
 import SearchA from "../components/Advanced/SearchA";
 
 interface Title {

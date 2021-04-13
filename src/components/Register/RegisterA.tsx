@@ -1,14 +1,26 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "./../../services/Firebase";
 
 const RegisterA = () => {
+	const history = useHistory();
 	const [showToast, setShowToast] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [messageError, setMessageError] = useState("");
 
 	const login = () => {
-		console.log("login function");
+		auth.createUserWithEmailAndPassword(email, password)
+			.then(() => {
+				setMessageError("Register successfully");
+				setShowToast(true);
+				history.push("/");
+			})
+			.catch((error) => {
+				setMessageError(error.message);
+				setShowToast(true);
+			});
 	};
 
 	return (
@@ -46,8 +58,8 @@ const RegisterA = () => {
 			<IonToast
 				isOpen={showToast}
 				onDidDismiss={() => setShowToast(false)}
-				message="You need to fill search field!"
-				duration={2000}
+				message={messageError}
+				duration={5000}
 				position="bottom"
 			/>
 		</div>
