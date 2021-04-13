@@ -34,6 +34,7 @@ import "tailwindcss/utilities.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import UserPage from "./pages/UserPage";
 
 const App = () => {
 	return (
@@ -65,6 +66,9 @@ const App = () => {
 						</Route>
 						<Route path="/advanced">
 							<AdvancedPage name="Advanced search" />
+						</Route>
+						<Route path="/user">
+							<UserPage name="User page" />
 						</Route>
 					</IonRouterOutlet>
 				</IonSplitPane>

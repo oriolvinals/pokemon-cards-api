@@ -38,30 +38,39 @@ const appPages: AppPage[] = [
 		iosIcon: "/assets/icon/menu/advanced.svg",
 		mdIcon: "/assets/icon/menu/advanced.svg",
 	},
-	{
-		title: "Login",
-		url: "/login",
-		iosIcon: "/assets/icon/menu/login.svg",
-		mdIcon: "/assets/icon/menu/login.svg",
-	},
 ];
 
 const Menu = () => {
 	const location = useLocation();
 
-	auth.onAuthStateChanged(function (user) {
-		if (user) {
-			console.log(user.uid);
-		} else {
-			console.log("not logged");
-		}
-	});
+	const handleLogOut = () => {
+		auth.signOut();
+	};
 
 	return (
 		<IonMenu contentId="main" type="overlay">
 			<IonContent>
 				<IonList id="inbox-list">
 					<IonListHeader>Pokemon Card App</IonListHeader>
+					{auth.currentUser && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === "user" ? "light" : ""
+								}
+								routerLink={"/user"}
+							>
+								<IonIcon
+									md={""}
+									ios={""}
+									slot="start"
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{auth.currentUser.email}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
+
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
@@ -84,6 +93,45 @@ const Menu = () => {
 							</IonMenuToggle>
 						);
 					})}
+
+					{!auth.currentUser && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === "Login" ? "light" : ""
+								}
+								routerLink={"/login"}
+							>
+								<IonIcon
+									md={"/assets/icon/menu/login.svg"}
+									ios={"/assets/icon/menu/login.svg"}
+									slot="start"
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{"Login"}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
+
+					{auth.currentUser && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === "user" ? "light" : ""
+								}
+								onClick={handleLogOut}
+								routerLink={"/"}
+							>
+								<IonIcon
+									md={""}
+									ios={""}
+									slot="start"
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{"Log Out"}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
 				</IonList>
 			</IonContent>
 		</IonMenu>

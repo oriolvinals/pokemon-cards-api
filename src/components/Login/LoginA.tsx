@@ -1,14 +1,26 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "./../../services/Firebase";
 
 const LoginA = () => {
+	const history = useHistory();
 	const [showToast, setShowToast] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [messageError, setMessageError] = useState("");
 
 	const login = () => {
-		console.log("login function");
+		auth.signInWithEmailAndPassword(email, password)
+			.then(() => {
+				setMessageError("Login successfully");
+				setShowToast(true);
+				history.push("/");
+			})
+			.catch((error) => {
+				setMessageError(error.message);
+				setShowToast(true);
+			});
 	};
 
 	return (
@@ -46,7 +58,7 @@ const LoginA = () => {
 			<IonToast
 				isOpen={showToast}
 				onDidDismiss={() => setShowToast(false)}
-				message="You need to fill search field!"
+				message={messageError}
 				duration={2000}
 				position="bottom"
 			/>
