@@ -10,7 +10,6 @@ import {
 } from "@ionic/react";
 
 import { useHistory, useLocation } from "react-router-dom";
-import { auth } from "../services/Firebase";
 
 interface AppPage {
 	url: string;
@@ -44,34 +43,16 @@ const Menu = () => {
 	const location = useLocation();
 	const history = useHistory();
 
-	const handleLogOut = async () => {
+	/*const handleLogOut = async () => {
 		await auth.signOut();
 		history.push("/");
-	};
+	};*/
 
 	return (
 		<IonMenu contentId="main" type="overlay">
 			<IonContent>
 				<IonList id="inbox-list">
 					<IonListHeader>Pokemon Card App</IonListHeader>
-					{auth.currentUser && (
-						<IonMenuToggle autoHide={false}>
-							<IonItem
-								color={
-									location.pathname === "/user" ? "light" : ""
-								}
-								routerLink={"/user"}
-							>
-								<IonIcon
-									md={""}
-									ios={""}
-									slot="start"
-									className="h-10 w-10 mr-6"
-								></IonIcon>
-								<IonLabel>{auth.currentUser.email}</IonLabel>
-							</IonItem>
-						</IonMenuToggle>
-					)}
 
 					{appPages.map((appPage, index) => {
 						return (
@@ -95,45 +76,6 @@ const Menu = () => {
 							</IonMenuToggle>
 						);
 					})}
-
-					{!auth.currentUser && (
-						<IonMenuToggle autoHide={false}>
-							<IonItem
-								color={
-									location.pathname === "Login" ? "light" : ""
-								}
-								routerLink={"/login"}
-							>
-								<IonIcon
-									md={"/assets/icon/menu/login.svg"}
-									ios={"/assets/icon/menu/login.svg"}
-									slot="start"
-									className="h-10 w-10 mr-6"
-								></IonIcon>
-								<IonLabel>{"Login"}</IonLabel>
-							</IonItem>
-						</IonMenuToggle>
-					)}
-
-					{auth.currentUser && (
-						<IonMenuToggle autoHide={false}>
-							<IonItem
-								color={
-									location.pathname === "user" ? "light" : ""
-								}
-								onClick={handleLogOut}
-								routerLink={"/"}
-							>
-								<IonIcon
-									md={""}
-									ios={""}
-									slot="start"
-									className="h-10 w-10 mr-6"
-								></IonIcon>
-								<IonLabel>{"Log Out"}</IonLabel>
-							</IonItem>
-						</IonMenuToggle>
-					)}
 				</IonList>
 			</IonContent>
 		</IonMenu>

@@ -12,6 +12,11 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export default firebase;
-
-export const auth = firebase.auth();
+export const loginUser = async (email: string, password: string) => {
+	const res = await firebase
+		.auth()
+		.signInWithEmailAndPassword(email, password)
+		.then((user) => user)
+		.catch((error) => error);
+	return res;
+};

@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import "./index.css";
@@ -11,8 +11,6 @@ import SearchPage from "./pages/SearchPage";
 import AdvancedPage from "./pages/AdvancedPage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
-
-import { auth } from "./services/Firebase";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -49,18 +47,10 @@ const App = () => {
 							<HomePage name="Home" />
 						</Route>
 						<Route path="/login">
-							{auth.currentUser ? (
-								<Redirect to="/" />
-							) : (
-								<LogInPage name="Log In" />
-							)}
+							<LogInPage name="Log In" />
 						</Route>
 						<Route path="/register">
-							{auth.currentUser ? (
-								<Redirect to="/" />
-							) : (
-								<RegisterPage name="Register" />
-							)}
+							<RegisterPage name="Register" />
 						</Route>
 						<Route path="/sets" exact={true}>
 							<SetsPage name="Sets" />
@@ -78,11 +68,7 @@ const App = () => {
 							<AdvancedPage name="Advanced search" />
 						</Route>
 						<Route path="/user">
-							{!auth.currentUser ? (
-								<Redirect to="/" />
-							) : (
-								<UserPage name="User page" />
-							)}
+							<UserPage name="User page" />
 						</Route>
 					</IonRouterOutlet>
 				</IonSplitPane>

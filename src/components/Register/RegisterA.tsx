@@ -1,7 +1,6 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "./../../services/Firebase";
 
 const RegisterA = () => {
 	const history = useHistory();
@@ -10,18 +9,8 @@ const RegisterA = () => {
 	const [password, setPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
 
-	const login = async () => {
-		await auth
-			.createUserWithEmailAndPassword(email, password)
-			.then(() => {
-				setMessageError("Register successfully");
-				setShowToast(true);
-				history.push("/");
-			})
-			.catch((error) => {
-				setMessageError(error.message);
-				setShowToast(true);
-			});
+	const register = async () => {
+		console.log("register");
 	};
 
 	return (
@@ -45,7 +34,7 @@ const RegisterA = () => {
 					onIonChange={(e) => setPassword(e.detail.value!)}
 				/>
 			</IonItem>
-			<IonButton className="mt-3 rounded-xl" onClick={login}>
+			<IonButton className="mt-3 rounded-xl" onClick={register}>
 				Register
 			</IonButton>
 			<IonLabel>
