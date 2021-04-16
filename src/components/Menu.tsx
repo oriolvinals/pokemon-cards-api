@@ -9,7 +9,8 @@ import {
 	IonMenuToggle,
 } from "@ionic/react";
 
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { user, logOut } from "../services/Firebase";
 
 interface AppPage {
 	url: string;
@@ -39,21 +40,63 @@ const appPages: AppPage[] = [
 	},
 ];
 
-const Menu = () => {
-	const location = useLocation();
-	const history = useHistory();
+const userMenus: AppPage[] = [
+	{
+		title: "User",
+		url: "/user",
+		iosIcon: "/assets/icon/menu/user.svg",
+		mdIcon: "/assets/icon/menu/user.svg",
+	},
+	{
+		title: "Log Out",
+		url: "/logout",
+		iosIcon: "/assets/icon/menu/logout.svg",
+		mdIcon: "/assets/icon/menu/logout.svg",
+	},
+];
 
-	/*const handleLogOut = async () => {
-		await auth.signOut();
-		history.push("/");
-	};*/
+const noUserMenus: AppPage[] = [
+	{
+		title: "Login",
+		url: "/login",
+		iosIcon: "/assets/icon/menu/login.svg",
+		mdIcon: "/assets/icon/menu/login.svg",
+	},
+];
+
+const Menu = () => {
+	const currentUser = user();
+	const location = useLocation();
+
+	const handleLogOut = async () => {
+		await logOut();
+	};
 
 	return (
 		<IonMenu contentId="main" type="overlay">
 			<IonContent>
 				<IonList id="inbox-list">
 					<IonListHeader>Pokemon Card App</IonListHeader>
-
+					{currentUser !== null && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === userMenus[0].url
+										? "light"
+										: ""
+								}
+								routerLink={userMenus[0].url}
+							>
+								<IonIcon
+									slot="start"
+									md={userMenus[0].iosIcon}
+									ios={userMenus[0].mdIcon}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{userMenus[0].title}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
@@ -76,6 +119,38 @@ const Menu = () => {
 							</IonMenuToggle>
 						);
 					})}
+					{currentUser ? (
+						<IonMenuToggle autoHide={false}>
+							<IonItem onClick={handleLogOut}>
+								<IonIcon
+									slot="start"
+									md={userMenus[1].iosIcon}
+									ios={userMenus[1].mdIcon}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{userMenus[1].title}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					) : (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === noUserMenus[0].url
+										? "light"
+										: ""
+								}
+								routerLink={noUserMenus[0].url}
+							>
+								<IonIcon
+									slot="start"
+									md={noUserMenus[0].iosIcon}
+									ios={noUserMenus[0].mdIcon}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{noUserMenus[0].title}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
 				</IonList>
 			</IonContent>
 		</IonMenu>

@@ -13,10 +13,27 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const loginUser = async (email: string, password: string) => {
-	const res = await firebase
-		.auth()
-		.signInWithEmailAndPassword(email, password)
-		.then((user) => user)
-		.catch((error) => error);
-	return res;
+	try {
+		await firebase.auth().signInWithEmailAndPassword(email, password);
+		return true;
+	} catch (error) {
+		return error;
+	}
+};
+
+export const registerUser = async (email: string, password: string) => {
+	try {
+		await firebase.auth().createUserWithEmailAndPassword(email, password);
+		return true;
+	} catch (error) {
+		return error;
+	}
+};
+
+export const user = async () => {
+	return firebase.auth().currentUser;
+};
+
+export const logOut = async () => {
+	await firebase.auth().signOut();
 };

@@ -11,8 +11,13 @@ const LoginA = () => {
 
 	const login = async () => {
 		const res = await loginUser(email, password);
-		setMessageError(res.message);
-		setShowToast(true);
+		if (res !== true) {
+			setMessageError(res.message);
+			setShowToast(true);
+		} else {
+			setMessageError("Login Succesfully");
+			setShowToast(true);
+		}
 	};
 
 	return (
