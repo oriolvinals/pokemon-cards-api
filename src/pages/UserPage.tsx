@@ -8,6 +8,8 @@ import {
 	IonToolbar,
 } from "@ionic/react";
 
+import ProfileInfo from "../components/User/ProfileInfo"
+
 interface Title {
 	name: string;
 }
@@ -28,7 +30,7 @@ const UserPage = ({ name }: Title) => {
 						<IonTitle size="large">{name}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<div>User page</div>
+				<ProfileInfo />
 			</IonContent>
 		</IonPage>
 	);

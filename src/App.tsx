@@ -78,11 +78,7 @@ const App = () => {
 							<AdvancedPage name="Advanced search" />
 						</Route>
 						<Route path="/user">
-							{!auth.currentUser ? (
-								<Redirect to="/" />
-							) : (
-								<UserPage name="User page" />
-							)}
+							<UserPage name="User page" />
 						</Route>
 					</IonRouterOutlet>
 				</IonSplitPane>
