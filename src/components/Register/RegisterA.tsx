@@ -10,8 +10,9 @@ const RegisterA = () => {
 	const [password, setPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
 
-	const login = () => {
-		auth.createUserWithEmailAndPassword(email, password)
+	const login = async () => {
+		await auth
+			.createUserWithEmailAndPassword(email, password)
 			.then(() => {
 				setMessageError("Register successfully");
 				setShowToast(true);

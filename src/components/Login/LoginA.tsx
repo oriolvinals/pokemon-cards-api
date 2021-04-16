@@ -10,8 +10,9 @@ const LoginA = () => {
 	const [password, setPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
 
-	const login = () => {
-		auth.signInWithEmailAndPassword(email, password)
+	const login = async () => {
+		await auth
+			.signInWithEmailAndPassword(email, password)
 			.then(() => {
 				setMessageError("Login successfully");
 				setShowToast(true);

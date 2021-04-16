@@ -9,7 +9,7 @@ import {
 	IonMenuToggle,
 } from "@ionic/react";
 
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { auth } from "../services/Firebase";
 
 interface AppPage {
@@ -42,9 +42,11 @@ const appPages: AppPage[] = [
 
 const Menu = () => {
 	const location = useLocation();
+	const history = useHistory();
 
-	const handleLogOut = () => {
-		auth.signOut();
+	const handleLogOut = async () => {
+		await auth.signOut();
+		history.push("/");
 	};
 
 	return (
