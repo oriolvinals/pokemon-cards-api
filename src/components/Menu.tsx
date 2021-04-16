@@ -58,7 +58,7 @@ const Menu = () => {
 						<IonMenuToggle autoHide={false}>
 							<IonItem
 								color={
-									location.pathname === "user" ? "light" : ""
+									location.pathname === "/user" ? "light" : ""
 								}
 								routerLink={"/user"}
 							>
