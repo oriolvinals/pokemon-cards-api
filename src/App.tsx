@@ -13,7 +13,7 @@ import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserPage from "./pages/UserPage";
 
-import { user } from "./services/Firebase";
+import { useFirebaseApp, useUser } from "reactfire";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,7 +39,9 @@ import "tailwindcss/utilities.css";
 import "./theme/variables.css";
 
 const App = () => {
-	const currentUser = user();
+	const firebase = useFirebaseApp();
+	console.log(firebase);
+	const currentUser = useUser();
 	return (
 		<IonApp>
 			<IonReactRouter>
@@ -50,14 +52,14 @@ const App = () => {
 							<HomePage name="Home" />
 						</Route>
 						<Route path="/login">
-							{currentUser ? (
+							{currentUser.data ? (
 								<Redirect to="/" />
 							) : (
 								<LogInPage name="Log In" />
 							)}
 						</Route>
 						<Route path="/register">
-							{currentUser ? (
+							{currentUser.data ? (
 								<Redirect to="/" />
 							) : (
 								<RegisterPage name="Register" />
@@ -79,7 +81,7 @@ const App = () => {
 							<AdvancedPage name="Advanced search" />
 						</Route>
 						<Route path="/user">
-							{!currentUser ? (
+							{!currentUser.data ? (
 								<Redirect to="/" />
 							) : (
 								<UserPage name="User page" />

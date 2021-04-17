@@ -1,7 +1,8 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from "../../services/Firebase";
+import "firebase/auth";
+import { useFirebaseApp } from "reactfire";
 
 const LoginA = () => {
 	const [showToast, setShowToast] = useState(false);
@@ -9,15 +10,20 @@ const LoginA = () => {
 	const [password, setPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
 
-	const login = async () => {
-		const res = await loginUser(email, password);
-		if (res !== true) {
-			setMessageError(res.message);
-			setShowToast(true);
-		} else {
-			setMessageError("Login Succesfully");
-			setShowToast(true);
-		}
+	const firebase = useFirebaseApp();
+
+	const login = () => {
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(email, password)
+			.then(() => {
+				setMessageError("Login Succesfully");
+				setShowToast(true);
+			})
+			.catch((error) => {
+				setMessageError(error.message);
+				setShowToast(true);
+			});
 	};
 
 	return (

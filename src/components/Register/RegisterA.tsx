@@ -1,29 +1,31 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { registerUser } from "../../services/Firebase";
-import { useHistory } from "react-router-dom";
+import "firebase/auth";
+import { useFirebaseApp } from "reactfire";
 
 const RegisterA = () => {
-	const history = useHistory();
-
 	const [showToast, setShowToast] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
 
+	const firebase = useFirebaseApp();
+
 	const register = async () => {
 		if (password === repeatPassword) {
-			const res = await registerUser(email, password);
-			if (res !== true) {
-				setMessageError(res.message);
-				setShowToast(true);
-			} else {
-				setMessageError("Account registration successfully");
-				setShowToast(true);
-				history.push("/");
-			}
+			await firebase
+				.auth()
+				.createUserWithEmailAndPassword(email, password)
+				.then(() => {
+					setMessageError("Register successfully");
+					setShowToast(true);
+				})
+				.catch((error) => {
+					setMessageError(error.message);
+					setShowToast(true);
+				});
 		} else {
 			setMessageError("Passwords don't match");
 			setShowToast(true);
