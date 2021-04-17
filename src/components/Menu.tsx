@@ -37,37 +37,14 @@ const appPages: AppPage[] = [
 		iosIcon: "/assets/icon/menu/advanced.svg",
 		mdIcon: "/assets/icon/menu/advanced.svg",
 	},
-	{
-		title: "Login",
-		url: "/login",
-		iosIcon: "/assets/icon/menu/login.svg",
-		mdIcon: "/assets/icon/menu/login.svg",
-	},
 ];
 
-const userMenus: AppPage[] = [
-	{
-		title: "User",
-		url: "/user",
-		iosIcon: "/assets/icon/menu/user.svg",
-		mdIcon: "/assets/icon/menu/user.svg",
-	},
-	{
-		title: "Log Out",
-		url: "/logout",
-		iosIcon: "/assets/icon/menu/logout.svg",
-		mdIcon: "/assets/icon/menu/logout.svg",
-	},
-];
-
-const noUserMenus: AppPage[] = [
-	{
-		title: "Login",
-		url: "/login",
-		iosIcon: "/assets/icon/menu/login.svg",
-		mdIcon: "/assets/icon/menu/login.svg",
-	},
-];
+const loginMenu = {
+	title: "Login",
+	url: "/login",
+	iosIcon: "/assets/icon/menu/login.svg",
+	mdIcon: "/assets/icon/menu/login.svg",
+};
 
 const Menu = () => {
 	const firebase = useFirebaseApp();
@@ -85,7 +62,22 @@ const Menu = () => {
 				<IonList id="inbox-list">
 					<IonListHeader>Pokemon Card App</IonListHeader>
 					{currentUser.data && (
-						<IonListHeader>{currentUser.data.email}</IonListHeader>
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === "/user" ? "light" : ""
+								}
+								routerLink={"/user"}
+							>
+								<IonIcon
+									slot="start"
+									md={"/assets/icon/menu/logout.svg"}
+									ios={"/assets/icon/menu/logout.svg"}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{currentUser.data.email}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
 					)}
 					{appPages.map((appPage, index) => {
 						return (
@@ -109,9 +101,35 @@ const Menu = () => {
 							</IonMenuToggle>
 						);
 					})}
+					{!currentUser.data && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === loginMenu.url
+										? "light"
+										: ""
+								}
+								routerLink={loginMenu.url}
+							>
+								<IonIcon
+									slot="start"
+									md={loginMenu.iosIcon}
+									ios={loginMenu.mdIcon}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>{loginMenu.title}</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
 					{currentUser.data && (
 						<IonMenuToggle autoHide={false}>
 							<IonItem onClick={logOut}>
+								<IonIcon
+									slot="start"
+									md={"/assets/icon/menu/logout.svg"}
+									ios={"/assets/icon/menu/logout.svg"}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
 								<IonLabel>{"Log Out"}</IonLabel>
 							</IonItem>
 						</IonMenuToggle>

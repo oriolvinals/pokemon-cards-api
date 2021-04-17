@@ -42,6 +42,7 @@ const App = () => {
 	const firebase = useFirebaseApp();
 	console.log(firebase);
 	const currentUser = useUser();
+	console.log(currentUser);
 	return (
 		<IonApp>
 			<IonReactRouter>
@@ -81,10 +82,10 @@ const App = () => {
 							<AdvancedPage name="Advanced search" />
 						</Route>
 						<Route path="/user">
-							{!currentUser.data ? (
-								<Redirect to="/" />
-							) : (
+							{currentUser.data ? (
 								<UserPage name="User page" />
+							) : (
+								<Redirect to="/" />
 							)}
 						</Route>
 					</IonRouterOutlet>
