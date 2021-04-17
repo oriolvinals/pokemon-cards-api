@@ -7,8 +7,8 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-
-import ProfileInfo from "../components/User/ProfileInfo"
+import "firebase/firestore";
+import ProfileInfo from "../components/User/ProfileInfo";
 
 interface Title {
 	name: string;

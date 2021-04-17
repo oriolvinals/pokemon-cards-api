@@ -23,6 +23,7 @@ import AdditionalInfo from "../components/Cards/AdditionalInfo";
 import Abilities from "../components/Cards/Abilities";
 import Set from "../components/Cards/Set";
 import Legalities from "../components/Cards/Legalities";
+import { useFirebaseApp, useUser } from "reactfire";
 
 interface ParamType {
 	id: string;
@@ -33,6 +34,8 @@ const CardPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [dataLoading, setDataLoading] = useState(false);
 	const [holo, setHolo] = useState(false);
+
+	const currentUser = useUser();
 
 	useEffect(() => {
 		const getCardInfo = async () => {
@@ -118,19 +121,21 @@ const CardPage = () => {
 							/>
 							<Set set={card.set} />
 							<Legalities legalities={card.legalities} />
-							<IonFab
-								vertical="bottom"
-								horizontal="end"
-								slot="fixed"
-								className="bg-transparent"
-							>
-								<IonFabButton>
-									<IonIcon
-										icon="/assets/icon/fav.svg"
-										className="h-10 w-10"
-									/>
-								</IonFabButton>
-							</IonFab>
+							{currentUser.data && (
+								<IonFab
+									vertical="bottom"
+									horizontal="end"
+									slot="fixed"
+									className="bg-transparent"
+								>
+									<IonFabButton>
+										<IonIcon
+											icon="/assets/icon/fav.svg"
+											className="h-10 w-10"
+										/>
+									</IonFabButton>
+								</IonFab>
+							)}
 						</div>
 					</IonContent>
 				</IonPage>

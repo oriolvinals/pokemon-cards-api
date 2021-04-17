@@ -39,10 +39,9 @@ import "tailwindcss/utilities.css";
 import "./theme/variables.css";
 
 const App = () => {
-	const firebase = useFirebaseApp();
-	console.log(firebase);
+	useFirebaseApp();
 	const currentUser = useUser();
-	console.log(currentUser);
+
 	return (
 		<IonApp>
 			<IonReactRouter>

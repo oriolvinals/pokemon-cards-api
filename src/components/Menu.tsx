@@ -50,7 +50,6 @@ const Menu = () => {
 	const firebase = useFirebaseApp();
 	const currentUser = useUser();
 	const location = useLocation();
-	console.log(currentUser);
 
 	const logOut = async () => {
 		await firebase.auth().signOut();
