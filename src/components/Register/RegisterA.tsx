@@ -16,7 +16,7 @@ const RegisterA = () => {
 	const firebase = useFirebaseApp();
 
 	const register = async () => {
-		if (password === repeatPassword) {
+		if (password === repeatPassword && username !== "") {
 			await firebase
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
