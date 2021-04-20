@@ -10,8 +10,8 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import { planet, sparkles, sparklesOutline } from "ionicons/icons";
-import React, { useEffect, useState } from "react";
+import { sparkles, sparklesOutline } from "ionicons/icons";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { getCard } from "../services/Api";
@@ -23,19 +23,38 @@ import AdditionalInfo from "../components/Cards/AdditionalInfo";
 import Abilities from "../components/Cards/Abilities";
 import Set from "../components/Cards/Set";
 import Legalities from "../components/Cards/Legalities";
-import { useFirebaseApp, useUser } from "reactfire";
+import { useUser, useFirestoreDocData, useFirestore } from "reactfire";
 
 interface ParamType {
 	id: string;
 }
+
+interface Props {
+	status: string;
+	data: any;
+}
+
+interface Sets {
+	sets?: Array<{
+		id: string;
+		name: string;
+		image: string;
+		totalCards: number;
+		cards: Array<{
+			id: string;
+			name: string;
+			image: string;
+		}>;
+	}>;
+}
+
 const CardPage = () => {
 	const { id } = useParams<ParamType>();
 	const [card, setCard] = useState<any>([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [dataLoading, setDataLoading] = useState(false);
 	const [holo, setHolo] = useState(false);
-
-	const currentUser = useUser();
+	const [save, setSave] = useState(false);
 
 	useEffect(() => {
 		const getCardInfo = async () => {
@@ -49,8 +68,19 @@ const CardPage = () => {
 		getCardInfo();
 	}, [id]);
 
+	const currentUser = useUser();
+	const userData = useFirestore()
+		.collection("users")
+		.doc(currentUser.data?.uid);
+	const { status, data }: Props = useFirestoreDocData(userData);
+	console.log(data);
+
 	const handleHolo = () => {
 		setHolo(!holo);
+	};
+
+	const handleSave = () => {
+		setSave(!save);
 	};
 
 	const nonHolo = ["Common", "Uncommon", "Rare"];
@@ -121,7 +151,7 @@ const CardPage = () => {
 							/>
 							<Set set={card.set} />
 							<Legalities legalities={card.legalities} />
-							{currentUser.data && (
+							{status === "success" && (
 								<IonFab
 									vertical="bottom"
 									horizontal="end"
@@ -130,7 +160,12 @@ const CardPage = () => {
 								>
 									<IonFabButton>
 										<IonIcon
-											icon="/assets/icon/fav.svg"
+											onClick={handleSave}
+											icon={
+												save
+													? "/assets/icon/fav.svg"
+													: "/assets/icon/fav_default.svg"
+											}
 											className="h-10 w-10"
 										/>
 									</IonFabButton>
