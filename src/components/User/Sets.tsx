@@ -15,7 +15,7 @@ interface Props {
 const Sets = ({ sets }: Props) => {
 	return (
 		<div className="p-5">
-			{sets.length !== 0 && (
+			{sets.length !== 0 && sets && (
 				<div>
 					<div className="text-gray-500 text-4xl text-center justify-center">
 						SETS
@@ -35,7 +35,7 @@ const Sets = ({ sets }: Props) => {
 					</div>
 				</div>
 			)}
-			{sets.length === 0 && (
+			{sets.length === 0 && sets && (
 				<div className="text-gray-500 text-2xl text-center fixed z-50 inset-1/4 flex items-center justify-center">
 					{"No sets"}
 				</div>

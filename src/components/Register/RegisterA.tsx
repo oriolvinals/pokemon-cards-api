@@ -41,6 +41,7 @@ const RegisterA = () => {
 							username: username,
 							email: data.user?.email,
 							image: images[Math.floor(Math.random() * 8)],
+							sets: [],
 						})
 						.then(() => {
 							setMessageError("Register successfully");
