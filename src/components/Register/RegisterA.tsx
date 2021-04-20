@@ -1,5 +1,5 @@
 import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "firebase/auth";
 import "firebase/firestore";
@@ -12,6 +12,17 @@ const RegisterA = () => {
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const [messageError, setMessageError] = useState("");
+
+	const [images, setImages] = useState<Array<string>>([
+		"bullbasaur",
+		"caterpie",
+		"charmander",
+		"mew",
+		"pikachu",
+		"snorlax",
+		"squirtle",
+		"zubat",
+	]);
 
 	const firebase = useFirebaseApp();
 
@@ -29,6 +40,7 @@ const RegisterA = () => {
 							id: data.user?.uid,
 							username: username,
 							email: data.user?.email,
+							image: images[Math.floor(Math.random() * 8)],
 						})
 						.then(() => {
 							setMessageError("Register successfully");
