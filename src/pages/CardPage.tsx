@@ -14,7 +14,7 @@ import { sparkles, sparklesOutline } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
-import { getCard } from "../services/Api";
+import { getCard, getTotalCountFromSet } from "../services/Api";
 import PriceCard from "../components/Cards/PriceCard";
 import InfoCard from "../components/Cards/InfoCard";
 import Attacks from "../components/Cards/Attacks";
@@ -56,12 +56,17 @@ const CardPage = () => {
 	const [dataLoading, setDataLoading] = useState(false);
 	const [holo, setHolo] = useState(false);
 	const [save, setSave] = useState(false);
+	const [totalCount, setTotalCount] = useState<number>(0);
 
 	useEffect(() => {
 		const getCardInfo = async () => {
 			setIsLoading(true);
 			const data = await getCard(id);
 			setCard(data.data);
+			const ext = await data.data.id.split("-");
+			const count = await getTotalCountFromSet(ext[0]);
+			setTotalCount(count.totalCount);
+
 			setIsLoading(false);
 			setDataLoading(true);
 		};
@@ -74,7 +79,6 @@ const CardPage = () => {
 		.collection("users")
 		.doc(currentUser.data?.uid);
 	const { status, data }: Props = useFirestoreDocData(userData);
-	console.log(data);
 
 	const handleHolo = () => {
 		setHolo(!holo);
@@ -137,10 +141,7 @@ const CardPage = () => {
 								flavor={card.flavorText}
 								holo={holo}
 							/>
-							<Pagination
-								id={card.id}
-								total={card.set.printedTotal}
-							/>
+							<Pagination id={card.id} total={totalCount} />
 							<PriceCard tcgplayer={card.tcgplayer} />
 							<Abilities abilities={card.abilities} />
 							<Attacks attacks={card.attacks} />

@@ -86,6 +86,18 @@ const getTypes = async () => {
 	return await response.json();
 };
 
+const getTotalCountFromSet = async (id: string) => {
+	const response = await fetch(
+		"https://api.pokemontcg.io/v2/cards?q=set.id:" + id,
+		{
+			headers: {
+				"X-Api-Key": api_key,
+			},
+		}
+	);
+	return await response.json();
+};
+
 export {
 	getSets,
 	getSet,
@@ -96,4 +108,5 @@ export {
 	getSubtypes,
 	getRarities,
 	getTypes,
+	getTotalCountFromSet,
 };
