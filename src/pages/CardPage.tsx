@@ -24,6 +24,7 @@ import Abilities from "../components/Cards/Abilities";
 import Set from "../components/Cards/Set";
 import Legalities from "../components/Cards/Legalities";
 import { useUser, useFirestoreDocData, useFirestore } from "reactfire";
+import Pagination from "../components/Cards/Pagination";
 
 interface ParamType {
 	id: string;
@@ -135,6 +136,10 @@ const CardPage = () => {
 								image={card.images.large}
 								flavor={card.flavorText}
 								holo={holo}
+							/>
+							<Pagination
+								id={card.id}
+								total={card.set.printedTotal}
 							/>
 							<PriceCard tcgplayer={card.tcgplayer} />
 							<Abilities abilities={card.abilities} />

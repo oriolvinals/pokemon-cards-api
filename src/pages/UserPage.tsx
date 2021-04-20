@@ -49,7 +49,7 @@ const UserPage = ({ name }: Title) => {
 					<div>
 						<ProfileInfo
 							username={data.username}
-							image={data}
+							image={data.image}
 							email={data.email}
 							sets={34}
 							holoCards={32}
