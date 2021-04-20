@@ -25,12 +25,10 @@ const Pagination = ({ id, total }: Props) => {
 	const handleBack = () => {
 		if (idCard === 1) {
 			history.push({ pathname: "/cards/" + ext + "-" + total });
-			console.log(total);
 		} else {
 			history.push({
 				pathname: "/cards/" + ext + "-" + (idCard - 1),
 			});
-			console.log(idCard - 1);
 		}
 	};
 
@@ -39,12 +37,10 @@ const Pagination = ({ id, total }: Props) => {
 			history.push({
 				pathname: "/cards/" + ext + "-" + 1,
 			});
-			console.log(1);
 		} else {
 			history.push({
 				pathname: "/cards/" + ext + "-" + (idCard + 1),
 			});
-			console.log(idCard + 1);
 		}
 	};
 	return (

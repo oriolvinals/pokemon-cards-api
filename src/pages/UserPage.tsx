@@ -16,6 +16,20 @@ interface Title {
 	name: string;
 }
 
+interface Sets {
+	sets?: Array<{
+		id: string;
+		name: string;
+		image: string;
+		totalCards: number;
+		cards: Array<{
+			id: string;
+			name: string;
+			image: string;
+		}>;
+	}>;
+}
+
 interface Props {
 	status: string;
 	data: any;
@@ -55,7 +69,7 @@ const UserPage = ({ name }: Title) => {
 							holoCards={32}
 							cards={23}
 						/>
-						<Sets sets={sets} />
+						<Sets sets={data.sets} />
 					</div>
 				)}
 				{status === "error" && <div>error</div>}

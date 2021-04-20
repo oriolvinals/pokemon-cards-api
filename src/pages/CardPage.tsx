@@ -116,7 +116,7 @@ const CardPage = () => {
 						<Loader loading={isLoading} />
 					</IonHeader>
 
-					<IonContent fullscreen>
+					<IonContent>
 						<IonHeader collapse="condense">
 							<IonToolbar>
 								<IonTitle size="large">{card.name}</IonTitle>
