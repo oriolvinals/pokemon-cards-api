@@ -16,8 +16,9 @@ const ProfileInfo = ({
 	cards,
 }: Props) => {
 	return (
-		<div className="shadow-lg  w-full p-4 bg-gray-200">
-			<div className="flex flex-row items-start space-x-4">
+		
+		<div className="shadow-lg  w-full">
+			<div className="flex flex-row items-start space-x-4 bg_user p-4">
 				<img
 					src={"/assets/icon/user/" + image + ".svg"}
 					className="w-28 h-28"
@@ -25,10 +26,10 @@ const ProfileInfo = ({
 				/>
 				<div className="h-28 w-full flex flex-col justify-between">
 					<div>
-						<p className="text-gray-800 dark:text-white text-xl font-medium">
+						<p className="text-white dark:text-white text-xl font-medium">
 							{username}
 						</p>
-						<p className="text-gray-400 text-xs">{email}</p>
+						<p className="text-white text-xs">{email}</p>
 					</div>
 					<div className="rounded-lg bg-green-400  dark:bg-white p-2 w-full">
 						<div className="flex items-center justify-around text-xs text-green-900 dark:text-black">
