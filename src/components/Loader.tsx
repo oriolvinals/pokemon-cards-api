@@ -1,5 +1,3 @@
-import { card } from "ionicons/icons";
-
 interface Loading {
 	loading: boolean;
 }

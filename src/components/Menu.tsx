@@ -122,7 +122,7 @@ const Menu = () => {
 					)}
 					{currentUser.data && (
 						<IonMenuToggle autoHide={false}>
-							<IonItem onClick={logOut}>
+							<IonItem onClick={logOut} routerLink={"/"}>
 								<IonIcon
 									slot="start"
 									md={"/assets/icon/menu/logout.svg"}
