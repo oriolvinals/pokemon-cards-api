@@ -1,4 +1,7 @@
+import { useUser } from "reactfire";
 const ProfileInfo = () => {
+	const currentUser = useUser();
+	
 	return <div className="shadow-lg  w-full p-4 bg-white ">
 		<div className="flex flex-row items-start space-x-4">
 			<img src="/assets/icon/user/pikachu.svg" className="w-28 h-28 rounded-full bg-green-600 " alt="user profile avatar"/>
@@ -7,7 +10,7 @@ const ProfileInfo = () => {
 					<p className="text-gray-800 dark:text-white text-xl font-medium">
 						Oriol Viñals
 					</p>
-					<p className="text-gray-400 text-xs">oriolviñals@gmail.com</p>
+					<p className="text-gray-400 text-xs">{currentUser.data.email}</p>
 				</div>
 				<div className="rounded-lg bg-green-400  dark:bg-white p-2 w-full">
 					<div className="flex items-center justify-around text-xs text-green-900 dark:text-black">
