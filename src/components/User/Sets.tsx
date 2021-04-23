@@ -28,7 +28,7 @@ const Sets = ({ sets }: Props) => {
 									name={set.name}
 									image={set.image}
 									cards={set.cards.length}
-									total={22}
+									total={set.totalCards}
 								/>
 							);
 						})}

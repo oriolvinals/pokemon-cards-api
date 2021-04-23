@@ -10,7 +10,7 @@ import {
 	IonTitle,
 	IonToolbar,
 } from "@ionic/react";
-import { sparkles, sparklesOutline } from "ionicons/icons";
+import { cardSharp, sparkles, sparklesOutline } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
@@ -25,6 +25,7 @@ import Set from "../components/Cards/Set";
 import Legalities from "../components/Cards/Legalities";
 import { useUser, useFirestoreDocData, useFirestore } from "reactfire";
 import Pagination from "../components/Cards/Pagination";
+import firebase from "firebase";
 
 interface ParamType {
 	id: string;
@@ -36,17 +37,21 @@ interface Props {
 }
 
 interface Sets {
-	sets?: Array<{
+	id: string;
+	name: string;
+	image: string;
+	totalCards: number;
+	cards: Array<{
 		id: string;
 		name: string;
 		image: string;
-		totalCards: number;
-		cards: Array<{
-			id: string;
-			name: string;
-			image: string;
-		}>;
 	}>;
+}
+
+interface Card {
+	id: string;
+	name: string;
+	image: string;
 }
 
 const CardPage = () => {
@@ -80,12 +85,97 @@ const CardPage = () => {
 		.doc(currentUser.data?.uid);
 	const { status, data }: Props = useFirestoreDocData(userData);
 
+	useEffect(() => {
+		if (currentUser.data) {
+			const CheckCard = (sets: Array<any>) => {
+				let exists = false;
+				// eslint-disable-next-line array-callback-return
+				sets.map((set: Sets) => {
+					console.table(set.cards);
+					// eslint-disable-next-line array-callback-return
+					set.cards.map((c: Card) => {
+						if (c.id === id) {
+							exists = true;
+						}
+					});
+				});
+				return exists;
+			};
+
+			if (data) {
+				if (data.sets.length !== 0) {
+					setSave(CheckCard(data.sets));
+				}
+			}
+		}
+	}, [data, id, currentUser]);
+
+	const AddCard = async () => {
+		let setExists = false;
+		let indexSet = 0;
+		data.sets.map((s: any, i: number) => {
+			if (s.id === card.set.id) {
+				indexSet = i;
+				setExists = true;
+			}
+		});
+
+		if (setExists) {
+			let c = { id: card.id, name: card.name, image: card.images.small };
+			data.sets[indexSet].cards.push(c);
+
+			await firebase
+				.firestore()
+				.collection("users")
+				.doc(currentUser.data.uid)
+				.set(data);
+		} else {
+			let c: Array<{}> = [];
+			c.push({ id: card.id, name: card.name, image: card.images.small });
+			data.sets.push({
+				id: card.set.id,
+				name: card.set.name,
+				image: card.set.images.logo,
+				totalCards: card.set.total,
+				cards: c,
+			});
+
+			await firebase
+				.firestore()
+				.collection("users")
+				.doc(currentUser.data.uid)
+				.set(data);
+		}
+	};
+
+	const DeleteCard = async () => {
+		data.sets.map((s: any, i: number) => {
+			s.cards.map((c: any, j: number) => {
+				if (c.id === id) {
+					data.sets[i].cards.splice(j, 1);
+				}
+			});
+		});
+
+		await firebase
+			.firestore()
+			.collection("users")
+			.doc(currentUser.data.uid)
+			.set(data);
+	};
+
 	const handleHolo = () => {
 		setHolo(!holo);
 	};
 
 	const handleSave = () => {
 		setSave(!save);
+
+		if (!save) {
+			AddCard();
+		} else {
+			DeleteCard();
+		}
 	};
 
 	const nonHolo = ["Common", "Uncommon", "Rare"];

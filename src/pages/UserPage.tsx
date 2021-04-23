@@ -11,6 +11,7 @@ import "firebase/firestore";
 import ProfileInfo from "../components/User/ProfileInfo";
 import { useFirestoreDocData, useFirestore, useUser } from "reactfire";
 import Sets from "../components/User/Sets";
+import { useEffect, useState } from "react";
 
 interface Title {
 	name: string;
@@ -41,7 +42,19 @@ const UserPage = ({ name }: Title) => {
 		.doc(currentUser.data.uid);
 	const { status, data }: Props = useFirestoreDocData(userData);
 
-	const sets = ["", "", ""];
+	const [cards, setCards] = useState(0);
+
+	useEffect(() => {
+		if (data) {
+			let number = 0;
+			data.sets.map((s: any) => {
+				s.cards.map((c: any) => {
+					number++;
+				});
+			});
+			setCards(number);
+		}
+	}, [data]);
 
 	return (
 		<IonPage>
@@ -65,9 +78,9 @@ const UserPage = ({ name }: Title) => {
 							username={data.username}
 							image={data.image}
 							email={data.email}
-							sets={34}
-							holoCards={32}
-							cards={23}
+							sets={data.sets.length}
+							holoCards={0}
+							cards={cards}
 						/>
 						<Sets sets={data.sets} />
 					</div>
