@@ -43,16 +43,22 @@ const UserPage = ({ name }: Title) => {
 	const { status, data }: Props = useFirestoreDocData(userData);
 
 	const [cards, setCards] = useState(0);
+	const [holos, setHolos] = useState(0);
 
 	useEffect(() => {
 		if (data) {
-			let number = 0;
+			let cards_number = 0;
+			let holos_number = 0;
 			data.sets.map((s: any) => {
 				s.cards.map((c: any) => {
-					number++;
+					cards_number++;
+					if (c.holo) {
+						holos_number++;
+					}
 				});
 			});
-			setCards(number);
+			setCards(cards_number);
+			setHolos(holos_number);
 		}
 	}, [data]);
 
@@ -79,7 +85,7 @@ const UserPage = ({ name }: Title) => {
 							image={data.image}
 							email={data.email}
 							sets={data.sets.length}
-							holoCards={0}
+							holoCards={holos}
 							cards={cards}
 						/>
 						<Sets sets={data.sets} />

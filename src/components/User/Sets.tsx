@@ -25,6 +25,7 @@ const Sets = ({ sets }: Props) => {
 							return (
 								<Set
 									key={i}
+									id={set.id}
 									name={set.name}
 									image={set.image}
 									cards={set.cards.length}

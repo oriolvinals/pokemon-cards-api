@@ -1,21 +1,34 @@
+import { Link } from "react-router-dom";
+
 interface Props {
+	id: string;
 	name: string;
 	image: string;
 	cards: number;
 	total: number;
 }
 
-const Set = ({ name, image, cards, total }: Props) => {
+const Set = ({ id, name, image, cards, total }: Props) => {
 	return (
-		<div className="flex flex-row justify-between items-center p-3 border rounded-md border-transparent bg-blue-700 bg-opacity-10">
-			<div className="flex flex-row items-center space-x-5">
-				<img src={image} alt="Set symbol" className="h-12" />
-				<span className="text-sm">{name}</span>
+		<Link
+			to={{ pathname: "/sets/" + id }}
+			className="rounded-md border-transparent"
+			style={{
+				backgroundImage: `url(` + image + `)`,
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+			}}
+		>
+			<div className="flex flex-row justify-between items-center p-5 w-full h-full bg-black bg-opacity-75">
+				<div className="flex flex-row items-center space-x-5 text-md">
+					<span>{name}</span>
+				</div>
+				<div>
+					{cards} / {total}
+				</div>
 			</div>
-			<div className="text-md">
-				{cards} / {total}
-			</div>
-		</div>
+		</Link>
 	);
 };
 

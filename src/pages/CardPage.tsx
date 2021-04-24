@@ -45,6 +45,7 @@ interface Sets {
 		id: string;
 		name: string;
 		image: string;
+		holo: boolean;
 	}>;
 }
 
@@ -62,6 +63,8 @@ const CardPage = () => {
 	const [holo, setHolo] = useState(false);
 	const [save, setSave] = useState(false);
 	const [totalCount, setTotalCount] = useState<number>(0);
+
+	const nonHolo = ["Common", "Uncommon", "Rare"];
 
 	useEffect(() => {
 		const getCardInfo = async () => {
@@ -91,7 +94,6 @@ const CardPage = () => {
 				let exists = false;
 				// eslint-disable-next-line array-callback-return
 				sets.map((set: Sets) => {
-					console.table(set.cards);
 					// eslint-disable-next-line array-callback-return
 					set.cards.map((c: Card) => {
 						if (c.id === id) {
@@ -111,6 +113,7 @@ const CardPage = () => {
 	}, [data, id, currentUser]);
 
 	const AddCard = async () => {
+		let holo = !nonHolo.includes(card.rarity);
 		let setExists = false;
 		let indexSet = 0;
 		data.sets.map((s: any, i: number) => {
@@ -121,7 +124,12 @@ const CardPage = () => {
 		});
 
 		if (setExists) {
-			let c = { id: card.id, name: card.name, image: card.images.small };
+			let c = {
+				id: card.id,
+				name: card.name,
+				image: card.images.small,
+				holo: holo,
+			};
 			data.sets[indexSet].cards.push(c);
 
 			await firebase
@@ -131,7 +139,12 @@ const CardPage = () => {
 				.set(data);
 		} else {
 			let c: Array<{}> = [];
-			c.push({ id: card.id, name: card.name, image: card.images.small });
+			c.push({
+				id: card.id,
+				name: card.name,
+				image: card.images.small,
+				holo: holo,
+			});
 			data.sets.push({
 				id: card.set.id,
 				name: card.set.name,
@@ -149,13 +162,21 @@ const CardPage = () => {
 	};
 
 	const DeleteCard = async () => {
+		let indexSet = -1;
 		data.sets.map((s: any, i: number) => {
 			s.cards.map((c: any, j: number) => {
 				if (c.id === id) {
-					data.sets[i].cards.splice(j, 1);
+					s.cards.splice(j, 1);
+					if (s.cards.length === 0) {
+						indexSet = i;
+					}
 				}
 			});
 		});
+
+		if (indexSet !== -1) {
+			data.sets.splice(indexSet, 1);
+		}
 
 		await firebase
 			.firestore()
@@ -177,8 +198,6 @@ const CardPage = () => {
 			DeleteCard();
 		}
 	};
-
-	const nonHolo = ["Common", "Uncommon", "Rare"];
 
 	return (
 		<>
