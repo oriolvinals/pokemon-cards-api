@@ -12,6 +12,8 @@ import AdvancedPage from "./pages/AdvancedPage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserPage from "./pages/UserPage";
+import OpeningPage from "./pages/OpeningPage";
+import OpeningPackPage from "./pages/OpeningPackPage";
 
 import { useFirebaseApp, useUser } from "reactfire";
 
@@ -37,7 +39,6 @@ import "tailwindcss/utilities.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import OpeningPage from "./pages/OpeningPage";
 
 const App = () => {
 	useFirebaseApp();
@@ -88,11 +89,11 @@ const App = () => {
 								<Redirect to="/" />
 							)}
 						</Route>
-						<Route path="/opening">
+						<Route path="/opening" exact={true}>
 							<OpeningPage name="Opening Set Pack" />
 						</Route>
-						<Route path="/opening/:id" exact={true}>
-							<div>A</div>
+						<Route path="/opening/:id">
+							<OpeningPackPage />
 						</Route>
 					</IonRouterOutlet>
 				</IonSplitPane>
