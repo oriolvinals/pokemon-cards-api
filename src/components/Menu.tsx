@@ -37,6 +37,12 @@ const appPages: AppPage[] = [
 		mdIcon: "/assets/icon/menu/sets.svg",
 	},
 	{
+		title: "Opening",
+		url: "/opening",
+		iosIcon: "/assets/icon/menu/opening.svg",
+		mdIcon: "/assets/icon/menu/opening.svg",
+	},
+	{
 		title: "Advanced",
 		url: "/advanced",
 		iosIcon: "/assets/icon/menu/advanced.svg",
@@ -75,24 +81,7 @@ const Menu = () => {
 			<IonContent>
 				<IonList id="inbox-list">
 					<IonListHeader>Pokemon Card App</IonListHeader>
-					{currentUser.data && (
-						<IonMenuToggle autoHide={false}>
-							<IonItem
-								color={
-									location.pathname === "/user" ? "light" : ""
-								}
-								routerLink={"/user"}
-							>
-								<IonIcon
-									slot="start"
-									md={"/assets/icon/menu/user.svg"}
-									ios={"/assets/icon/menu/user.svg"}
-									className="h-10 w-10 mr-6"
-								></IonIcon>
-								<IonLabel>{data.username}</IonLabel>
-							</IonItem>
-						</IonMenuToggle>
-					)}
+
 					{appPages.map((appPage, index) => {
 						return (
 							<IonMenuToggle key={index} autoHide={false}>
@@ -115,6 +104,38 @@ const Menu = () => {
 							</IonMenuToggle>
 						);
 					})}
+					{currentUser.data && (
+						<IonMenuToggle autoHide={false}>
+							<IonItem
+								color={
+									location.pathname === "/user" ? "light" : ""
+								}
+								routerLink={"/user"}
+							>
+								<IonIcon
+									slot="start"
+									md={
+										status === "success"
+											? "/assets/icon/user/" +
+											  data.image +
+											  ".svg"
+											: ""
+									}
+									ios={
+										status === "success"
+											? "/assets/icon/user/" +
+											  data.image +
+											  ".svg"
+											: ""
+									}
+									className="h-10 w-10 mr-6"
+								></IonIcon>
+								<IonLabel>
+									{status === "success" && data.username}
+								</IonLabel>
+							</IonItem>
+						</IonMenuToggle>
+					)}
 					{!currentUser.data && (
 						<IonMenuToggle autoHide={false}>
 							<IonItem
@@ -142,7 +163,7 @@ const Menu = () => {
 									slot="start"
 									md={"/assets/icon/menu/logout.svg"}
 									ios={"/assets/icon/menu/logout.svg"}
-									className="h-10 w-10 mr-6"
+									className="h-8 w-8 mr-6"
 								></IonIcon>
 								<IonLabel>{"Log Out"}</IonLabel>
 							</IonItem>
