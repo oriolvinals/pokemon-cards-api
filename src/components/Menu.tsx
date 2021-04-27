@@ -9,7 +9,8 @@ import {
 	IonMenuToggle,
 } from "@ionic/react";
 import { useLocation } from "react-router-dom";
-import { useFirebaseApp, useUser } from "reactfire";
+import { useFirebaseApp, useUser, useFirestore, useFirestoreDocData } from "reactfire";
+
 
 interface AppPage {
 	url: string;
@@ -46,10 +47,22 @@ const loginMenu = {
 	mdIcon: "/assets/icon/menu/login.svg",
 };
 
+interface Props {
+	status: string;
+	data: any;
+}
+
+
+
 const Menu = () => {
 	const firebase = useFirebaseApp();
 	const currentUser = useUser();
 	const location = useLocation();
+
+	const userData = useFirestore()
+		.collection("users")
+		.doc(currentUser.data.uid);
+	const { status, data }: Props = useFirestoreDocData(userData);
 
 	const logOut = async () => {
 		await firebase.auth().signOut();
@@ -74,7 +87,7 @@ const Menu = () => {
 									ios={"/assets/icon/menu/user.svg"}
 									className="h-10 w-10 mr-6"
 								></IonIcon>
-								<IonLabel>{currentUser.data.email}</IonLabel>
+								<IonLabel>{data.username}</IonLabel>
 							</IonItem>
 						</IonMenuToggle>
 					)}
