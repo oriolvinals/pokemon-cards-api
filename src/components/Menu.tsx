@@ -9,8 +9,12 @@ import {
 	IonMenuToggle,
 } from "@ionic/react";
 import { useLocation } from "react-router-dom";
-import { useFirebaseApp, useUser, useFirestore, useFirestoreDocData } from "reactfire";
-
+import {
+	useFirebaseApp,
+	useUser,
+	useFirestore,
+	useFirestoreDocData,
+} from "reactfire";
 
 interface AppPage {
 	url: string;
@@ -52,8 +56,6 @@ interface Props {
 	data: any;
 }
 
-
-
 const Menu = () => {
 	const firebase = useFirebaseApp();
 	const currentUser = useUser();
@@ -61,7 +63,7 @@ const Menu = () => {
 
 	const userData = useFirestore()
 		.collection("users")
-		.doc(currentUser.data.uid);
+		.doc(currentUser.data?.uid);
 	const { status, data }: Props = useFirestoreDocData(userData);
 
 	const logOut = async () => {
