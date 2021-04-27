@@ -44,18 +44,22 @@ const Pagination = ({ id, total }: Props) => {
 		}
 	};
 	return (
-		<div className="flex flex-row justify-around">
-			<IonIcon
-				icon={arrowBack}
-				className="h-12 w-12"
-				onClick={handleBack}
-			></IonIcon>
-			<IonIcon
-				icon={arrowForward}
-				className="h-12 w-12"
-				onClick={handleNext}
-			></IonIcon>
-		</div>
+		<>
+			{idCard && (
+				<div className="flex flex-row justify-around">
+					<IonIcon
+						icon={arrowBack}
+						className="h-12 w-12"
+						onClick={handleBack}
+					></IonIcon>
+					<IonIcon
+						icon={arrowForward}
+						className="h-12 w-12"
+						onClick={handleNext}
+					></IonIcon>
+				</div>
+			)}
+		</>
 	);
 };
 
