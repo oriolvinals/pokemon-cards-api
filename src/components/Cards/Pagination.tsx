@@ -44,7 +44,7 @@ const Pagination = ({ id, total }: Props) => {
 		}
 	};
 	return (
-		<>
+		<div>
 			{idCard && (
 				<div className="flex flex-row justify-around">
 					<IonIcon
@@ -59,7 +59,7 @@ const Pagination = ({ id, total }: Props) => {
 					></IonIcon>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 
