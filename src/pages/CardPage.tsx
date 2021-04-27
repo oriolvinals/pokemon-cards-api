@@ -136,7 +136,7 @@ const CardPage = () => {
 				.firestore()
 				.collection("users")
 				.doc(currentUser.data.uid)
-				.set(data);
+				.update({ sets: data.sets });
 		} else {
 			let c: Array<{}> = [];
 			c.push({
@@ -157,7 +157,7 @@ const CardPage = () => {
 				.firestore()
 				.collection("users")
 				.doc(currentUser.data.uid)
-				.set(data);
+				.update({ sets: data.sets });
 		}
 	};
 

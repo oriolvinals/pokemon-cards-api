@@ -70,8 +70,8 @@ const Menu = () => {
 							>
 								<IonIcon
 									slot="start"
-									md={"/assets/icon/menu/logout.svg"}
-									ios={"/assets/icon/menu/logout.svg"}
+									md={"/assets/icon/menu/user.svg"}
+									ios={"/assets/icon/menu/user.svg"}
 									className="h-10 w-10 mr-6"
 								></IonIcon>
 								<IonLabel>{currentUser.data.email}</IonLabel>

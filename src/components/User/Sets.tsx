@@ -17,8 +17,8 @@ const Sets = ({ sets }: Props) => {
 		<div className="p-5">
 			{sets.length !== 0 && sets && (
 				<div>
-					<div className="text-gray-500 text-4xl text-center justify-center">
-						SETS
+					<div className="text-gray-500 text-3xl text-center justify-center">
+						Sets
 					</div>
 					<div className="flex flex-col space-y-3 mt-4">
 						{sets.map((set: any, i: number) => {
