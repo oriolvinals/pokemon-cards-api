@@ -1,5 +1,7 @@
+import Card from "./Card"
+
 const OpeningPack = () => {
-	const cards = [1, 2, 3, 4, 5, 6];
-	return <div>cards</div>;
+	
+	return <div><Card image="" /></div>;
 };
 export default OpeningPack;
