@@ -19,7 +19,6 @@ const OpeningPackPage = () => {
 					<IonTitle>{"Opening pack"}</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-
 			<IonContent>
 				<IonHeader collapse="condense">
 					<IonToolbar>
