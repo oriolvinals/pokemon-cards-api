@@ -45,7 +45,7 @@ const Pagination = ({ id, total }: Props) => {
 	};
 	return (
 		<div>
-			{idCard && (
+			{!isNaN(idCard) && (
 				<div className="flex flex-row justify-around">
 					<IonIcon
 						icon={arrowBack}
