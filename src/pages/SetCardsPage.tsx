@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
 	IonButtons,
 	IonHeader,
+	IonIcon,
 	IonMenuButton,
 	IonPage,
 	IonSearchbar,
@@ -9,11 +10,12 @@ import {
 	IonToolbar,
 } from "@ionic/react";
 import { IonContent } from "@ionic/react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import SetCardsData from "../components/SetCards/SetCardsData";
 import SetInfo from "../components/SetCards/SetInfo";
 import { getSet, getCardsFromSet } from "../services/Api";
 import Loader from "../components/Loader";
+import { albumsOutline } from "ionicons/icons";
 
 interface ParamType {
 	id: string;
@@ -21,13 +23,12 @@ interface ParamType {
 
 const SetCardsPage = () => {
 	const { id } = useParams<ParamType>();
-
 	const [searchText, setSearchText] = useState("");
-
 	const [set, setSetInfo] = useState<any>({});
 	const [cards, setCards] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [dataLoading, setDataLoading] = useState<boolean>(false);
+	const history = useHistory();
 
 	useEffect(() => {
 		const getSetInfoFromApi = async () => {
@@ -54,6 +55,10 @@ const SetCardsPage = () => {
 		return filteredCards;
 	};
 
+	const handleOpening = () => {
+		history.push("/opening/" + id);
+	};
+
 	return (
 		<IonPage>
 			<IonHeader>
@@ -61,7 +66,15 @@ const SetCardsPage = () => {
 					<IonButtons slot="start">
 						<IonMenuButton />
 					</IonButtons>
-					<IonTitle>{set.name}</IonTitle>
+					<div className="flex flex-row justify-between mr-4 items-center">
+						<IonTitle>{set.name}</IonTitle>
+						<IonIcon
+							onClick={handleOpening}
+							size="large"
+							md={albumsOutline}
+							ios={albumsOutline}
+						/>
+					</div>
 				</IonToolbar>
 				<div className="bg-black">
 					<IonSearchbar

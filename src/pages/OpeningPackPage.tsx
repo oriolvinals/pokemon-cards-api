@@ -9,16 +9,47 @@ import {
 	IonToolbar,
 } from "@ionic/react";
 import { reloadOutline } from "ionicons/icons";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import Loader from "../components/Loader";
 import OpeningPack from "../components/OpeningPack/OpeningPack";
+import { getCardsFromSet, getSet } from "../services/Api";
+
+interface ParamType {
+	id: string;
+}
+
 const OpeningPackPage = () => {
+	const { id } = useParams<ParamType>();
+
 	const [reloading, setReloading] = useState(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [set, setSetInfo] = useState<any>({});
+	const [cards, setCards] = useState<any[]>([]);
+
 	const handleReload = async () => {
 		setReloading(true);
 		await delay(1000);
 		setReloading(false);
 	};
 	const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+	useEffect(() => {
+		const getSetInfoFromApi = async () => {
+			setIsLoading(true);
+			const data = await getSet(id);
+			setSetInfo(data.data);
+		};
+
+		const getSetCardsFromApi = async () => {
+			const data = await getCardsFromSet(id);
+			setCards(data.data);
+			setIsLoading(false);
+		};
+
+		getSetInfoFromApi();
+		getSetCardsFromApi();
+	}, [id]);
 
 	return (
 		<IonPage>
@@ -38,6 +69,7 @@ const OpeningPackPage = () => {
 						/>
 					</div>
 				</IonToolbar>
+				<Loader loading={isLoading} />
 			</IonHeader>
 
 			<IonContent>
@@ -46,7 +78,7 @@ const OpeningPackPage = () => {
 						<IonTitle size="large">{"Opening pack"}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<OpeningPack reloading={reloading} />
+				<OpeningPack reloading={reloading} set={set} cards={cards} />
 			</IonContent>
 		</IonPage>
 	);
