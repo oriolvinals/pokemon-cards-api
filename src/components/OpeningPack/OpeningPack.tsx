@@ -20,13 +20,40 @@ const OpeningPack = ({ reloading, set, cards }: Props) => {
 			const randomElement =
 				cards[Math.floor(Math.random() * cards.length)];
 			setCardsOpening([randomElement]);
+		} else if (numberCards === 2) {
+			const randomElements = [
+				cards[Math.floor(Math.random() * cards.length)],
+				cards[Math.floor(Math.random() * cards.length)],
+			];
+			setCardsOpening(randomElements);
 		} else {
-			let c = [];
-			for (let index = 0; index < numberCards; index++) {
-				const randomElement =
-					cards[Math.floor(Math.random() * cards.length)];
-				c.push(randomElement);
-			}
+			let c: Array<any> = [];
+			let common = cards.filter((card: any) => {
+				return (
+					["Common", "Uncommon", "Rare"].includes(card.rarity) &&
+					card.supertype === "Pokémon"
+				);
+			});
+			let holo = cards.filter((card: any) => {
+				return (
+					!["Common", "Uncommon", "Rare"].includes(card.rarity) &&
+					card.supertype === "Pokémon"
+				);
+			});
+			let trainer = cards.filter((card: any) => {
+				return (
+					card.supertype === "Trainer" || card.supertype === "Energy"
+				);
+			});
+
+			common.sort(() => Math.random() - 0.5);
+			const commonpick = common.slice(0, 5);
+			holo.sort(() => Math.random() - 0.5);
+			const holopick = holo.slice(0, 3);
+			trainer.sort(() => Math.random() - 0.5);
+			const trainerpick = trainer.slice(0, 2);
+			c = [...c, ...commonpick, ...holopick, ...trainerpick];
+
 			setCardsOpening(c);
 		}
 	}, [numberCards, cards]);
@@ -52,7 +79,6 @@ const OpeningPack = ({ reloading, set, cards }: Props) => {
 
 	useEffect(() => {
 		if (reloading) {
-			console.log("sha de reloading");
 			pickCards();
 		}
 	}, [reloading, pickCards]);
@@ -71,7 +97,11 @@ const OpeningPack = ({ reloading, set, cards }: Props) => {
 			<div className="grid grid-cols-2 gap-3 p-3">
 				{!reloading &&
 					cardsOpening.map((card, i) => (
-						<Card key={i} image={card?.images?.small} />
+						<Card
+							key={card?.id || i}
+							image={card?.images?.small}
+							flipped={false}
+						/>
 					))}
 			</div>
 		</div>

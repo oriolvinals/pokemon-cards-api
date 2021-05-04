@@ -3,10 +3,11 @@ import ReactCardFlip from "react-card-flip";
 
 interface Props {
 	image: string;
+	flipped: boolean;
 }
 
-const Card = ({ image }: Props) => {
-	const [isFliped, setIsFliped] = useState(false);
+const Card = ({ image, flipped }: Props) => {
+	const [isFliped, setIsFliped] = useState(flipped);
 	const handleClick = (e: any) => {
 		if (!isFliped) setIsFliped(!isFliped);
 	};
