@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "gmav.pokemon-cards-api",
 	"appName": "Pokemon-Cards-Api",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
