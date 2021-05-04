@@ -1,5 +1,5 @@
 {
-	"appId": "gmav.pokemon-cards-api",
+	"appId": "gmav.pokemoncardsapi",
 	"appName": "Pokemon-Cards-Api",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
