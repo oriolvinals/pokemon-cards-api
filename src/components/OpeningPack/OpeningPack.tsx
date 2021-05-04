@@ -12,8 +12,6 @@ const OpeningPack = ({ reloading, set, cards }: Props) => {
 	const [numberCards, setNumberCards] = useState(0);
 	const [name, setName] = useState("");
 	const [cardsOpening, setCardsOpening] = useState<Array<any>>([]);
-	/* 5 common Pokémon cards, 3 uncommon cards, 1 reverse holographic card of any rarity, and 1 rare card or rarer.
-	 */
 
 	const pickCards = useCallback(() => {
 		if (numberCards === 1) {
@@ -63,7 +61,8 @@ const OpeningPack = ({ reloading, set, cards }: Props) => {
 			const nametl = name.toLowerCase();
 			if (
 				nametl.includes("mcdonald's collection") ||
-				nametl.includes("black star promos")
+				nametl.includes("black star promos") ||
+				nametl.includes("detective")
 			)
 				setNumberCards(1);
 			else if (nametl.includes("pop series")) setNumberCards(2);
