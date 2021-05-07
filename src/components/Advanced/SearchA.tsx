@@ -203,7 +203,7 @@ const SearchA = () => {
 
 	return (
 		<>
-			<div className="flex flex-col justify-center ">
+			<div className="flex flex-col justify-center mt-2">
 				<Input
 					onTextChange={handleName}
 					name="Card Name"

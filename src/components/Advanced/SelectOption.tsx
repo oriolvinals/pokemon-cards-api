@@ -13,9 +13,10 @@ const SelectOption = ({
 	placeholder,
 }: Props) => {
 	return (
-		<IonItem>
+		<IonItem color="dark">
 			<IonLabel>{name}</IonLabel>
 			<IonSelect
+				color="dark"
 				placeholder={placeholder}
 				multiple
 				onIonChange={onSelectChange}

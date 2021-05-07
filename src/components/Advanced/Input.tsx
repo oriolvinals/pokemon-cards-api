@@ -8,9 +8,9 @@ interface Props {
 
 const Input = ({ onTextChange, name, placeholder }: Props) => {
 	return (
-		<IonItem className="flex">
+		<IonItem className="flex" color="dark">
 			<IonLabel position="fixed">{name}</IonLabel>
-			<IonItem className="rounded-xl flex-shrink ">
+			<IonItem className="rounded-xl flex-shrink" color="dark">
 				<IonInput
 					onIonChange={onTextChange}
 					placeholder={placeholder}

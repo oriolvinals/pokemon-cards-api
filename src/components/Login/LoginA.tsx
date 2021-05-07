@@ -28,7 +28,7 @@ const LoginA = () => {
 
 	return (
 		<div className="fixed z-50 w-full h-full flex items-center justify-center flex-col bg-black bg-opacity-60 space-y-3">
-			<IonLabel className="bold -mt-48 text-xl p-5 w-full text-center">
+			<IonLabel className="bold -mt-48 text-xl p-5 w-full text-center text-white">
 				Login
 			</IonLabel>
 			<IonItem className="rounded-xl w-10/12">

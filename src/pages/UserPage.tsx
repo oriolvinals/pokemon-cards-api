@@ -72,7 +72,7 @@ const UserPage = ({ name }: Title) => {
 					<IonTitle>{name}</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
+			<IonContent color="dark">
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{name}</IonTitle>

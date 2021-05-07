@@ -21,7 +21,7 @@ const SetPreview = ({
 		<Link
 			to={{ pathname: "/sets/" + id }}
 			key={id}
-			className="bg-gray-800 px-10 py-2 m-1 flex flex-col space-y-3 items-center rounded-md scale-100 hover:absolute hover:scale-200 transition-all duration-500 ease-in-out"
+			className="bg-gray-800 px-10 py-3 flex flex-col space-y-3 items-center rounded-md scale-100 hover:absolute hover:scale-200 transition-all duration-500 ease-in-out"
 		>
 			<div className="text-center h-24 flex items-center justify-center">
 				<img
@@ -46,16 +46,16 @@ const SetPreview = ({
 				</div>
 			</div>
 			<div>
-				<ol className="list-disc">
+				<div className="flex flex-row space-x-3">
 					{Object.keys(legalities).map((element: any, i: number) => (
-						<li
-							className="capitalize text-gray-400 text-sm"
+						<div
+							className="capitalize text-gray-400 text-sm bg-gray-700 rounded-md p-1"
 							key={i}
 						>
-							{element} {legalities[element]}
-						</li>
+							{element}
+						</div>
 					))}
-				</ol>
+				</div>
 			</div>
 		</Link>
 	);

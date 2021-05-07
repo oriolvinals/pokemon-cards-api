@@ -10,7 +10,7 @@ const SetsData = ({ sets, data }: Sets) => {
 	if (data) {
 		if (sets.length > 0) {
 			return (
-				<div className="px-5 grid grid-cols-1 sm:grid-cols-2">
+				<div className="px-2 grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
 					{sets.map((element, i) => (
 						<SetPreview
 							key={i}

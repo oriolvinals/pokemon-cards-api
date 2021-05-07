@@ -220,6 +220,9 @@ const CardPage = () => {
 										ios={holo ? sparkles : sparklesOutline}
 									/>
 								)}
+								{nonHolo.includes(card.rarity) && (
+									<IonIcon size="large" md={""} ios={""} />
+								)}
 							</div>
 						</IonToolbar>
 						<Loader loading={isLoading} />
@@ -239,7 +242,7 @@ const CardPage = () => {
 								)}
 							</IonToolbar>
 						</IonHeader>
-						<div className="px-7 grid grid-cols-1 gap-y-4 pb-5 bg-gradient-to-r from-blue-900 to-gray-900">
+						<div className="px-7 grid grid-cols-1 gap-y-4 pb-5 bg-gradient-to-r from-blue-900 to-gray-900 text-white">
 							<InfoCard
 								name={card.name}
 								supertype={card.supertype}

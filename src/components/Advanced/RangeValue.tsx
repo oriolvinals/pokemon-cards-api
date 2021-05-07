@@ -16,10 +16,9 @@ const RangeValue = ({ onRangeChange, name, min, max }: Props) => {
 	}>({ lower: min, upper: max });
 
 	return (
-		<IonItem>
+		<IonItem color="dark">
 			<IonLabel position="floating">{name}</IonLabel>
 			<IonRange
-				color="dark"
 				dual-knobs
 				pin
 				snaps

@@ -5,7 +5,7 @@ const Legalities = ({ legalities }: Props) => {
 	const leg = ["standard", "expanded", "unlimited"];
 	const colors = [
 		{ name: "empty", bg: "bg-white", text: "text-black" },
-		{ name: "Legal", bg: "bg-green-500", text: "text-white" },
+		{ name: "Legal", bg: "bg-green-500", text: "text-black" },
 		{ name: "Banned", bg: "bg-red-400", text: "text-white" },
 	];
 	return (

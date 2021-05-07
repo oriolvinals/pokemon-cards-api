@@ -49,7 +49,7 @@ const SearchPage = ({ name }: Title) => {
 				</IonToolbar>
 				<Loader loading={isLoading} />
 			</IonHeader>
-			<IonContent>
+			<IonContent color="dark">
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{name}</IonTitle>

@@ -72,7 +72,7 @@ const OpeningPackPage = () => {
 				<Loader loading={isLoading} />
 			</IonHeader>
 
-			<IonContent>
+			<IonContent color="dark">
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{"Opening pack"}</IonTitle>

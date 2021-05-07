@@ -19,7 +19,7 @@ const Set = ({ id, name, image, total }: Props) => {
 				backgroundSize: "cover",
 			}}
 		>
-			<div className="flex flex-row justify-between items-center p-5 w-full h-full bg-black bg-opacity-60">
+			<div className="flex flex-row justify-between items-center p-5 w-full h-full bg-black bg-opacity-60 rounded-md">
 				<div className="flex flex-row items-center space-x-5">
 					<span className="font-bold text-xl">{name}</span>
 				</div>

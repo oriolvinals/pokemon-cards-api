@@ -8,7 +8,7 @@ interface Props {
 const Opening = ({ sets, data }: Props) => {
 	return (
 		<>
-			<div className="grid grid-cols-1 gap-3 mt-4 px-3">
+			<div className="grid grid-cols-1 gap-3 mt-4 px-3 text-white">
 				{data &&
 					sets.map((set) => {
 						return (
