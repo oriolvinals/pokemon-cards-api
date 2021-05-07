@@ -59,7 +59,7 @@ export const SetsPage = ({ name }: Title) => {
 				<Loader loading={isLoading} />
 			</IonHeader>
 
-			<IonContent fullscreen>
+			<IonContent color="dark">
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{name}</IonTitle>

@@ -85,7 +85,7 @@ const SetCardsPage = () => {
 				<Loader loading={isLoading} />
 			</IonHeader>
 
-			<IonContent fullscreen>
+			<IonContent color="dark">
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">{set.name}</IonTitle>
